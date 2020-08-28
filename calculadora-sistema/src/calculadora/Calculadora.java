@@ -6,6 +6,7 @@
 package calculadora;
 
 import java.awt.Color;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -16,9 +17,10 @@ public class Calculadora extends javax.swing.JFrame {
     /**
      * Creates new form Calculadora
      */
-    String label;
-    int operacao,n1,n2,resultado=0;
-    
+    String label,res;
+    int operacao=0;
+    double n1,n2;
+
     public void ativarBotoes(Boolean condicao){
         btn_mais.setEnabled(condicao);
         btn_mult.setEnabled(condicao);
@@ -159,6 +161,11 @@ public class Calculadora extends javax.swing.JFrame {
                 btn_menosMouseExited(evt);
             }
         });
+        btn_menos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_menosActionPerformed(evt);
+            }
+        });
 
         btn_div.setBackground(new java.awt.Color(102, 102, 102));
         btn_div.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
@@ -173,6 +180,11 @@ public class Calculadora extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_divMouseExited(evt);
+            }
+        });
+        btn_div.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_divActionPerformed(evt);
             }
         });
 
@@ -210,6 +222,11 @@ public class Calculadora extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_multMouseExited(evt);
+            }
+        });
+        btn_mult.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_multActionPerformed(evt);
             }
         });
 
@@ -539,9 +556,9 @@ public class Calculadora extends javax.swing.JFrame {
         ativarBotoes(true);
         
         if(operacao==0){
-            n1 = Integer.parseInt(lbl_res.getText());
+            n1 = Double.parseDouble(lbl_res.getText());
         }else{
-            n2 = Integer.parseInt(lbl_res.getText());
+            n2 = Double.parseDouble(lbl_res.getText());
         }
     }//GEN-LAST:event_btn_7ActionPerformed
 
@@ -699,6 +716,7 @@ public class Calculadora extends javax.swing.JFrame {
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
         limparLabel();
         ativarBotoes(false);
+        operacao = 0;
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
@@ -708,9 +726,9 @@ public class Calculadora extends javax.swing.JFrame {
         ativarBotoes(true);
         
         if(operacao==0){
-            n1 = Integer.parseInt(lbl_res.getText());
+            n1 = Double.parseDouble(lbl_res.getText());
         }else{
-            n2 = Integer.parseInt(lbl_res.getText());
+            n2 = Double.parseDouble(lbl_res.getText());
         }
     }//GEN-LAST:event_btn_8ActionPerformed
 
@@ -720,8 +738,6 @@ public class Calculadora extends javax.swing.JFrame {
         ativarBotoes(false);
         limparLabel();
         operacao=1;
-
-
     }//GEN-LAST:event_btn_maisActionPerformed
 
     private void btn_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_9ActionPerformed
@@ -731,9 +747,9 @@ public class Calculadora extends javax.swing.JFrame {
         ativarBotoes(true);
         
         if(operacao==0){
-            n1 = Integer.parseInt(lbl_res.getText());
+            n1 = Double.parseDouble(lbl_res.getText());
         }else{
-            n2 = Integer.parseInt(lbl_res.getText());
+            n2 = Double.parseDouble(lbl_res.getText());
         }
     }//GEN-LAST:event_btn_9ActionPerformed
 
@@ -744,9 +760,9 @@ public class Calculadora extends javax.swing.JFrame {
         ativarBotoes(true);
         
         if(operacao==0){
-            n1 = Integer.parseInt(lbl_res.getText());
+            n1 = Double.parseDouble(lbl_res.getText());
         }else{
-            n2 = Integer.parseInt(lbl_res.getText());
+            n2 = Double.parseDouble(lbl_res.getText());
         }
     }//GEN-LAST:event_btn_4ActionPerformed
 
@@ -757,9 +773,9 @@ public class Calculadora extends javax.swing.JFrame {
         ativarBotoes(true);
         
         if(operacao==0){
-            n1 = Integer.parseInt(lbl_res.getText());
+            n1 = Double.parseDouble(lbl_res.getText());
         }else{
-            n2 = Integer.parseInt(lbl_res.getText());
+            n2 = Double.parseDouble(lbl_res.getText());
         }
     }//GEN-LAST:event_btn_5ActionPerformed
 
@@ -770,9 +786,9 @@ public class Calculadora extends javax.swing.JFrame {
         ativarBotoes(true);
         
         if(operacao==0){
-            n1 = Integer.parseInt(lbl_res.getText());
+            n1 = Double.parseDouble(lbl_res.getText());
         }else{
-            n2 = Integer.parseInt(lbl_res.getText());
+            n2 = Double.parseDouble(lbl_res.getText());
         }
     }//GEN-LAST:event_btn_6ActionPerformed
 
@@ -783,9 +799,9 @@ public class Calculadora extends javax.swing.JFrame {
         ativarBotoes(true);
         
         if(operacao==0){
-            n1 = Integer.parseInt(lbl_res.getText());
+            n1 = Double.parseDouble(lbl_res.getText());
         }else{
-            n2 = Integer.parseInt(lbl_res.getText());
+            n2 = Double.parseDouble(lbl_res.getText());
         }
     }//GEN-LAST:event_btn_1ActionPerformed
 
@@ -796,9 +812,9 @@ public class Calculadora extends javax.swing.JFrame {
         ativarBotoes(true);
         
         if(operacao==0){
-            n1 = Integer.parseInt(lbl_res.getText());
+            n1 = Double.parseDouble(lbl_res.getText());
         }else{
-            n2 = Integer.parseInt(lbl_res.getText());
+            n2 = Double.parseDouble(lbl_res.getText());
         }
     }//GEN-LAST:event_btn_2ActionPerformed
 
@@ -809,9 +825,9 @@ public class Calculadora extends javax.swing.JFrame {
         ativarBotoes(true);
         
         if(operacao==0){
-            n1 = Integer.parseInt(lbl_res.getText());
+            n1 = Double.parseDouble(lbl_res.getText());
         }else{
-            n2 = Integer.parseInt(lbl_res.getText());
+            n2 = Double.parseDouble(lbl_res.getText());
         }
     }//GEN-LAST:event_btn_3ActionPerformed
 
@@ -819,27 +835,31 @@ public class Calculadora extends javax.swing.JFrame {
             label = lbl_res.getText();
             lbl_res.setText(label + Integer.toString(0));
 
-            if(operacao==0){
-            n1 = Integer.parseInt(lbl_res.getText());
-            }else{
-                n2 = Integer.parseInt(lbl_res.getText());
-            }
+        if(operacao==0){
+            n1 = Double.parseDouble(lbl_res.getText());
+        }else{
+            n2 = Double.parseDouble(lbl_res.getText());
+        }
     }//GEN-LAST:event_btn_0ActionPerformed
 
     private void btn_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resActionPerformed
-        switch(operacao){
+       DecimalFormat formatadorInt = new DecimalFormat("#0");
+       DecimalFormat formatadorDouble = new DecimalFormat("#,##0.00");
+        
+       switch(operacao){
             case 1:
                 limparLabel();
-                lbl_res.setText(Integer.toString(n1) + "+" +  Integer.toString(n2) + "=" + Integer.toString(n1+n2));
+                
+                lbl_res.setText(formatadorInt.format(n1) + "+" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1+n2));
                 break;
             case 2:
-                lbl_res.setText(Integer.toString(n1) + "-" +  Integer.toString(n2) + "=" + Integer.toString(n1-n2));
+                lbl_res.setText(formatadorInt.format(n1) + "-" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1-n2));
                 break;
             case 3:
-                lbl_res.setText(Integer.toString(n1) + "*" +  Integer.toString(n2) + "=" + Integer.toString(n1*n2));
+                lbl_res.setText(formatadorInt.format(n1) + "*" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1*n2));
                 break;
             case 4:
-                lbl_res.setText(Integer.toString(n1) + "/" +  Integer.toString(n2) + "=" + Integer.toString(n1/n2));
+                lbl_res.setText(formatadorInt.format(n1) + "/" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1/n2));
                 break;
         }
     }//GEN-LAST:event_btn_resActionPerformed
@@ -847,6 +867,30 @@ public class Calculadora extends javax.swing.JFrame {
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
         System.exit(0);
     }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void btn_menosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menosActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + "-");
+        ativarBotoes(false);
+        limparLabel();
+        operacao=2;
+    }//GEN-LAST:event_btn_menosActionPerformed
+
+    private void btn_multActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_multActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + "*");
+        ativarBotoes(false);
+        limparLabel();
+        operacao=3;
+    }//GEN-LAST:event_btn_multActionPerformed
+
+    private void btn_divActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_divActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + "/");
+        ativarBotoes(false);
+        limparLabel();
+        operacao=4;
+    }//GEN-LAST:event_btn_divActionPerformed
 
     /**
      * @param args the command line arguments
