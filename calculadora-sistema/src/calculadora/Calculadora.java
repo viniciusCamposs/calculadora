@@ -8,6 +8,8 @@ package calculadora;
 import java.awt.Color;
 import java.text.DecimalFormat;
 
+
+
 /**
  *
  * @author Vinícius Alves de Campos
@@ -20,6 +22,8 @@ public class Calculadora extends javax.swing.JFrame {
     String label,res;
     int operacao=0;
     double n1,n2;
+    DecimalFormat formatadorInt = new DecimalFormat("#0");
+    DecimalFormat formatadorDouble = new DecimalFormat("#,##0.00");
 
     public void ativarBotoes(Boolean condicao){
         btn_mais.setEnabled(condicao);
@@ -717,6 +721,8 @@ public class Calculadora extends javax.swing.JFrame {
         limparLabel();
         ativarBotoes(false);
         operacao = 0;
+        n1 = 0;
+        n2 = 0;
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
@@ -733,11 +739,12 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_8ActionPerformed
 
     private void btn_maisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_maisActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + "+");
-        ativarBotoes(false);
-        limparLabel();
-        operacao=1;
+            operacao=1;
+
+            label = lbl_res.getText();
+            lbl_res.setText(label + "+");
+            ativarBotoes(false);
+            limparLabel();
     }//GEN-LAST:event_btn_maisActionPerformed
 
     private void btn_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_9ActionPerformed
@@ -767,6 +774,8 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_4ActionPerformed
 
     private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
+        
+        
         label = lbl_res.getText();
         lbl_res.setText(label + Integer.toString(5));
         
@@ -777,6 +786,8 @@ public class Calculadora extends javax.swing.JFrame {
         }else{
             n2 = Double.parseDouble(lbl_res.getText());
         }
+        
+        
     }//GEN-LAST:event_btn_5ActionPerformed
 
     private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
@@ -832,8 +843,8 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_3ActionPerformed
 
     private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
-            label = lbl_res.getText();
-            lbl_res.setText(label + Integer.toString(0));
+        label = lbl_res.getText();
+        lbl_res.setText(label + Integer.toString(0));
 
         if(operacao==0){
             n1 = Double.parseDouble(lbl_res.getText());
@@ -843,13 +854,8 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_0ActionPerformed
 
     private void btn_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resActionPerformed
-       DecimalFormat formatadorInt = new DecimalFormat("#0");
-       DecimalFormat formatadorDouble = new DecimalFormat("#,##0.00");
-        
-       switch(operacao){
+        switch(operacao){
             case 1:
-                limparLabel();
-                
                 lbl_res.setText(formatadorInt.format(n1) + "+" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1+n2));
                 break;
             case 2:
@@ -861,7 +867,7 @@ public class Calculadora extends javax.swing.JFrame {
             case 4:
                 lbl_res.setText(formatadorInt.format(n1) + "/" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1/n2));
                 break;
-        }
+       }
     }//GEN-LAST:event_btn_resActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
@@ -869,27 +875,32 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabel1MouseClicked
 
     private void btn_menosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menosActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + "-");
-        ativarBotoes(false);
-        limparLabel();
-        operacao=2;
+            operacao=2;
+
+            label = lbl_res.getText();
+            lbl_res.setText(label + "-");
+            ativarBotoes(false);
+            limparLabel();
     }//GEN-LAST:event_btn_menosActionPerformed
 
     private void btn_multActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_multActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + "*");
-        ativarBotoes(false);
-        limparLabel();
         operacao=3;
+
+            label = lbl_res.getText();
+            lbl_res.setText(label + "*");
+            ativarBotoes(false);
+            limparLabel();
+
     }//GEN-LAST:event_btn_multActionPerformed
 
     private void btn_divActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_divActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + "/");
-        ativarBotoes(false);
-        limparLabel();
-        operacao=4;
+            operacao=4;
+
+            label = lbl_res.getText();
+            lbl_res.setText(label + "/");
+            ativarBotoes(false);
+            limparLabel();
+ 
     }//GEN-LAST:event_btn_divActionPerformed
 
     /**
