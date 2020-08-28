@@ -16,9 +16,27 @@ public class Calculadora extends javax.swing.JFrame {
     /**
      * Creates new form Calculadora
      */
+    String label;
+    int operacao,n1,n2,resultado=0;
+    
+    public void ativarBotoes(Boolean condicao){
+        btn_mais.setEnabled(condicao);
+        btn_mult.setEnabled(condicao);
+        btn_div.setEnabled(condicao);
+        btn_menos.setEnabled(condicao);
+        btn_res.setEnabled(condicao);
+        btn_0.setEnabled(condicao);
+    }
+    
+    public void limparLabel(){
+        lbl_res.setText("");
+    }
+    
     public Calculadora() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+        
     }
 
     /**
@@ -33,7 +51,7 @@ public class Calculadora extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         painel_principal = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
+        lbl_res = new javax.swing.JLabel();
         btn_cancel = new javax.swing.JButton();
         btn_mais = new javax.swing.JButton();
         btn_res = new javax.swing.JButton();
@@ -52,23 +70,23 @@ public class Calculadora extends javax.swing.JFrame {
         btn_7 = new javax.swing.JButton();
         jPanel7 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
         painel_principal.setBackground(new java.awt.Color(51, 51, 51));
 
-        jLabel1.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel1.setFont(new java.awt.Font("Trebuchet MS", 0, 36)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel1.setText("0");
-        jLabel1.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        lbl_res.setBackground(new java.awt.Color(255, 255, 255));
+        lbl_res.setFont(new java.awt.Font("Trebuchet MS", 0, 36)); // NOI18N
+        lbl_res.setForeground(new java.awt.Color(204, 204, 204));
+        lbl_res.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lbl_res.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
 
         btn_cancel.setBackground(new java.awt.Color(204, 204, 204));
         btn_cancel.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         btn_cancel.setForeground(new java.awt.Color(102, 102, 102));
-        btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/logout.png"))); // NOI18N
+        btn_cancel.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/forbidden.png"))); // NOI18N
         btn_cancel.setBorderPainted(false);
         btn_cancel.setFocusPainted(false);
         btn_cancel.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -90,6 +108,7 @@ public class Calculadora extends javax.swing.JFrame {
         btn_mais.setForeground(new java.awt.Color(204, 204, 204));
         btn_mais.setText("+");
         btn_mais.setBorderPainted(false);
+        btn_mais.setEnabled(false);
         btn_mais.setFocusPainted(false);
         btn_mais.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -97,6 +116,11 @@ public class Calculadora extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_maisMouseExited(evt);
+            }
+        });
+        btn_mais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_maisActionPerformed(evt);
             }
         });
 
@@ -114,12 +138,18 @@ public class Calculadora extends javax.swing.JFrame {
                 btn_resMouseExited(evt);
             }
         });
+        btn_res.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_resActionPerformed(evt);
+            }
+        });
 
         btn_menos.setBackground(new java.awt.Color(102, 102, 102));
         btn_menos.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         btn_menos.setForeground(new java.awt.Color(204, 204, 204));
         btn_menos.setText("-");
         btn_menos.setBorderPainted(false);
+        btn_menos.setEnabled(false);
         btn_menos.setFocusPainted(false);
         btn_menos.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -135,6 +165,7 @@ public class Calculadora extends javax.swing.JFrame {
         btn_div.setForeground(new java.awt.Color(204, 204, 204));
         btn_div.setText("/");
         btn_div.setBorderPainted(false);
+        btn_div.setEnabled(false);
         btn_div.setFocusPainted(false);
         btn_div.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -150,6 +181,7 @@ public class Calculadora extends javax.swing.JFrame {
         btn_0.setForeground(new java.awt.Color(204, 204, 204));
         btn_0.setText("0");
         btn_0.setBorderPainted(false);
+        btn_0.setEnabled(false);
         btn_0.setFocusPainted(false);
         btn_0.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -159,12 +191,18 @@ public class Calculadora extends javax.swing.JFrame {
                 btn_0MouseExited(evt);
             }
         });
+        btn_0.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_0ActionPerformed(evt);
+            }
+        });
 
         btn_mult.setBackground(new java.awt.Color(102, 102, 102));
         btn_mult.setFont(new java.awt.Font("Calibri Light", 0, 18)); // NOI18N
         btn_mult.setForeground(new java.awt.Color(204, 204, 204));
         btn_mult.setText("*");
         btn_mult.setBorderPainted(false);
+        btn_mult.setEnabled(false);
         btn_mult.setFocusPainted(false);
         btn_mult.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseEntered(java.awt.event.MouseEvent evt) {
@@ -189,6 +227,11 @@ public class Calculadora extends javax.swing.JFrame {
                 btn_1MouseExited(evt);
             }
         });
+        btn_1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_1ActionPerformed(evt);
+            }
+        });
 
         btn_3.setBackground(new java.awt.Color(102, 102, 102));
         btn_3.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
@@ -202,6 +245,11 @@ public class Calculadora extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_3MouseExited(evt);
+            }
+        });
+        btn_3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_3ActionPerformed(evt);
             }
         });
 
@@ -219,6 +267,11 @@ public class Calculadora extends javax.swing.JFrame {
                 btn_2MouseExited(evt);
             }
         });
+        btn_2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_2ActionPerformed(evt);
+            }
+        });
 
         btn_4.setBackground(new java.awt.Color(102, 102, 102));
         btn_4.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
@@ -232,6 +285,11 @@ public class Calculadora extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_4MouseExited(evt);
+            }
+        });
+        btn_4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_4ActionPerformed(evt);
             }
         });
 
@@ -249,6 +307,11 @@ public class Calculadora extends javax.swing.JFrame {
                 btn_6MouseExited(evt);
             }
         });
+        btn_6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_6ActionPerformed(evt);
+            }
+        });
 
         btn_5.setBackground(new java.awt.Color(102, 102, 102));
         btn_5.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
@@ -262,6 +325,11 @@ public class Calculadora extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_5MouseExited(evt);
+            }
+        });
+        btn_5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_5ActionPerformed(evt);
             }
         });
 
@@ -279,6 +347,11 @@ public class Calculadora extends javax.swing.JFrame {
                 btn_8MouseExited(evt);
             }
         });
+        btn_8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_8ActionPerformed(evt);
+            }
+        });
 
         btn_9.setBackground(new java.awt.Color(102, 102, 102));
         btn_9.setFont(new java.awt.Font("Calibri Light", 1, 18)); // NOI18N
@@ -292,6 +365,11 @@ public class Calculadora extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 btn_9MouseExited(evt);
+            }
+        });
+        btn_9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_9ActionPerformed(evt);
             }
         });
 
@@ -322,19 +400,32 @@ public class Calculadora extends javax.swing.JFrame {
         jLabel2.setForeground(new java.awt.Color(204, 204, 204));
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel2.setText("Calculadora Básica");
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.LEFT);
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculadora/close.png"))); // NOI18N
+        jLabel1.setVerticalAlignment(javax.swing.SwingConstants.TOP);
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
         jPanel7.setLayout(jPanel7Layout);
         jPanel7Layout.setHorizontalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel1))
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                .addContainerGap())
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout painel_principalLayout = new javax.swing.GroupLayout(painel_principal);
@@ -345,7 +436,7 @@ public class Calculadora extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(painel_principalLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 3, Short.MAX_VALUE)
                         .addGroup(painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(btn_4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btn_1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -379,7 +470,7 @@ public class Calculadora extends javax.swing.JFrame {
                                 .addComponent(btn_cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(10, 10, 10))))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, painel_principalLayout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbl_res, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
@@ -388,8 +479,8 @@ public class Calculadora extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, painel_principalLayout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(lbl_res, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(painel_principalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(btn_8, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -442,7 +533,16 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_7MouseEntered
 
     private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
-        // TODO add your handling code here:
+        label = lbl_res.getText();
+        lbl_res.setText(label + Integer.toString(7));
+
+        ativarBotoes(true);
+        
+        if(operacao==0){
+            n1 = Integer.parseInt(lbl_res.getText());
+        }else{
+            n2 = Integer.parseInt(lbl_res.getText());
+        }
     }//GEN-LAST:event_btn_7ActionPerformed
 
     private void btn_7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_7MouseExited
@@ -597,8 +697,156 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_resMouseExited
 
     private void btn_cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cancelActionPerformed
-        System.exit(0);
+        limparLabel();
+        ativarBotoes(false);
     }//GEN-LAST:event_btn_cancelActionPerformed
+
+    private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + Integer.toString(8));
+        
+        ativarBotoes(true);
+        
+        if(operacao==0){
+            n1 = Integer.parseInt(lbl_res.getText());
+        }else{
+            n2 = Integer.parseInt(lbl_res.getText());
+        }
+    }//GEN-LAST:event_btn_8ActionPerformed
+
+    private void btn_maisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_maisActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + "+");
+        ativarBotoes(false);
+        limparLabel();
+        operacao=1;
+
+
+    }//GEN-LAST:event_btn_maisActionPerformed
+
+    private void btn_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_9ActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + Integer.toString(9));
+        
+        ativarBotoes(true);
+        
+        if(operacao==0){
+            n1 = Integer.parseInt(lbl_res.getText());
+        }else{
+            n2 = Integer.parseInt(lbl_res.getText());
+        }
+    }//GEN-LAST:event_btn_9ActionPerformed
+
+    private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + Integer.toString(4));
+        
+        ativarBotoes(true);
+        
+        if(operacao==0){
+            n1 = Integer.parseInt(lbl_res.getText());
+        }else{
+            n2 = Integer.parseInt(lbl_res.getText());
+        }
+    }//GEN-LAST:event_btn_4ActionPerformed
+
+    private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + Integer.toString(5));
+        
+        ativarBotoes(true);
+        
+        if(operacao==0){
+            n1 = Integer.parseInt(lbl_res.getText());
+        }else{
+            n2 = Integer.parseInt(lbl_res.getText());
+        }
+    }//GEN-LAST:event_btn_5ActionPerformed
+
+    private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + Integer.toString(6));
+        
+        ativarBotoes(true);
+        
+        if(operacao==0){
+            n1 = Integer.parseInt(lbl_res.getText());
+        }else{
+            n2 = Integer.parseInt(lbl_res.getText());
+        }
+    }//GEN-LAST:event_btn_6ActionPerformed
+
+    private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + Integer.toString(1));
+        
+        ativarBotoes(true);
+        
+        if(operacao==0){
+            n1 = Integer.parseInt(lbl_res.getText());
+        }else{
+            n2 = Integer.parseInt(lbl_res.getText());
+        }
+    }//GEN-LAST:event_btn_1ActionPerformed
+
+    private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + Integer.toString(2));
+        
+        ativarBotoes(true);
+        
+        if(operacao==0){
+            n1 = Integer.parseInt(lbl_res.getText());
+        }else{
+            n2 = Integer.parseInt(lbl_res.getText());
+        }
+    }//GEN-LAST:event_btn_2ActionPerformed
+
+    private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
+        label = lbl_res.getText();
+        lbl_res.setText(label + Integer.toString(3));
+        
+        ativarBotoes(true);
+        
+        if(operacao==0){
+            n1 = Integer.parseInt(lbl_res.getText());
+        }else{
+            n2 = Integer.parseInt(lbl_res.getText());
+        }
+    }//GEN-LAST:event_btn_3ActionPerformed
+
+    private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
+            label = lbl_res.getText();
+            lbl_res.setText(label + Integer.toString(0));
+
+            if(operacao==0){
+            n1 = Integer.parseInt(lbl_res.getText());
+            }else{
+                n2 = Integer.parseInt(lbl_res.getText());
+            }
+    }//GEN-LAST:event_btn_0ActionPerformed
+
+    private void btn_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resActionPerformed
+        switch(operacao){
+            case 1:
+                limparLabel();
+                lbl_res.setText(Integer.toString(n1) + "+" +  Integer.toString(n2) + "=" + Integer.toString(n1+n2));
+                break;
+            case 2:
+                lbl_res.setText(Integer.toString(n1) + "-" +  Integer.toString(n2) + "=" + Integer.toString(n1-n2));
+                break;
+            case 3:
+                lbl_res.setText(Integer.toString(n1) + "*" +  Integer.toString(n2) + "=" + Integer.toString(n1*n2));
+                break;
+            case 4:
+                lbl_res.setText(Integer.toString(n1) + "/" +  Integer.toString(n2) + "=" + Integer.toString(n1/n2));
+                break;
+        }
+    }//GEN-LAST:event_btn_resActionPerformed
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        System.exit(0);
+    }//GEN-LAST:event_jLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -656,13 +904,8 @@ public class Calculadora extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
-    private javax.swing.JPanel jPanel5;
-    private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JLabel lbl_res;
     private javax.swing.JPanel painel_principal;
     // End of variables declaration//GEN-END:variables
 }
