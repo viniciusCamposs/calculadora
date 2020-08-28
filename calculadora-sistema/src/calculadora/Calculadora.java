@@ -20,7 +20,7 @@ public class Calculadora extends javax.swing.JFrame {
      * Creates new form Calculadora
      */
     String label,res;
-    int operacao=0;
+    int operacao=0, contador=0;
     double n1,n2;
     DecimalFormat formatadorInt = new DecimalFormat("#0");
     DecimalFormat formatadorDouble = new DecimalFormat("#,##0.00");
@@ -721,8 +721,9 @@ public class Calculadora extends javax.swing.JFrame {
         limparLabel();
         ativarBotoes(false);
         operacao = 0;
-        n1 = 0;
-        n2 = 0;
+        n1=0;
+        n2=0;
+        contador = 0 ;
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
@@ -854,20 +855,43 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_0ActionPerformed
 
     private void btn_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resActionPerformed
-        switch(operacao){
-            case 1:
-                lbl_res.setText(formatadorInt.format(n1) + "+" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1+n2));
-                break;
-            case 2:
-                lbl_res.setText(formatadorInt.format(n1) + "-" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1-n2));
-                break;
-            case 3:
-                lbl_res.setText(formatadorInt.format(n1) + "*" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1*n2));
-                break;
-            case 4:
-                lbl_res.setText(formatadorInt.format(n1) + "/" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1/n2));
-                break;
+        contador += 1;
+        if(contador<1){
+            switch(operacao){
+                case 1:
+                    lbl_res.setText(formatadorInt.format(n1) + "+" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1+n2));       
+                    break;
+                case 2:
+                    lbl_res.setText(formatadorInt.format(n1) + "-" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1-n2));
+                    break;
+                case 3:
+                    lbl_res.setText(formatadorInt.format(n1) + "*" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1*n2));
+                    break;
+                case 4:
+                    lbl_res.setText(formatadorInt.format(n1) + "/" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1/n2));
+                    break;
+           }
+       }else{
+            switch(operacao){
+                case 1:
+                    lbl_res.setText(formatadorInt.format(n1) + "+" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1+n2));
+                    n1 = n1+n2;
+                    break;
+                case 2:
+                    lbl_res.setText(formatadorInt.format(n1) + "-" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1-n2));
+                    n1 = n1-n2;
+                    break;
+                case 3:
+                    lbl_res.setText(formatadorInt.format(n1) + "*" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1*n2));
+                    n1 = n1*n2;
+                    break;
+                case 4:
+                    lbl_res.setText(formatadorInt.format(n1) + "/" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1/n2));
+                    n1 = n1/n2;
+                    break;
+           }
        }
+       
     }//GEN-LAST:event_btn_resActionPerformed
 
     private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
