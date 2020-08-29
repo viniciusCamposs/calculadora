@@ -20,7 +20,7 @@ public class Calculadora extends javax.swing.JFrame {
      * Creates new form Calculadora
      */
     String label,res;
-    int operacao=0, contador=0;
+    int operacao=0, contadorResultado=0, contadorOperacao=0;
     double n1,n2;
     DecimalFormat formatadorInt = new DecimalFormat("#0");
     DecimalFormat formatadorDouble = new DecimalFormat("#,##0.00");
@@ -32,6 +32,23 @@ public class Calculadora extends javax.swing.JFrame {
         btn_menos.setEnabled(condicao);
         btn_res.setEnabled(condicao);
         btn_0.setEnabled(condicao);
+    }
+    
+    public void ativarBotoes2(Boolean condicao){
+        btn_0.setEnabled(condicao);
+        btn_1.setEnabled(condicao);
+        btn_2.setEnabled(condicao);
+        btn_3.setEnabled(condicao);
+        btn_4.setEnabled(condicao);
+        btn_5.setEnabled(condicao);
+        btn_6.setEnabled(condicao);
+        btn_7.setEnabled(condicao);
+        btn_8.setEnabled(condicao);
+        btn_9.setEnabled(condicao);
+        btn_mais.setEnabled(condicao);
+        btn_menos.setEnabled(condicao);
+        btn_div.setEnabled(condicao);
+        btn_mult.setEnabled(condicao);
     }
     
     public void limparLabel(){
@@ -554,15 +571,19 @@ public class Calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_7MouseEntered
 
     private void btn_7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_7ActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + Integer.toString(7));
-
-        ativarBotoes(true);
-        
-        if(operacao==0){
-            n1 = Double.parseDouble(lbl_res.getText());
+        if(contadorOperacao>1){
+            limparLabel();
         }else{
-            n2 = Double.parseDouble(lbl_res.getText());
+            label = lbl_res.getText();
+            lbl_res.setText(label + Integer.toString(7));
+
+            ativarBotoes(true);
+
+            if(operacao==0){
+                n1 = Double.parseDouble(lbl_res.getText());
+            }else{
+                n2 = Double.parseDouble(lbl_res.getText());
+            }
         }
     }//GEN-LAST:event_btn_7ActionPerformed
 
@@ -723,140 +744,185 @@ public class Calculadora extends javax.swing.JFrame {
         operacao = 0;
         n1=0;
         n2=0;
-        contador = 0 ;
+        contadorResultado = 0 ;
+        contadorOperacao = 0;
     }//GEN-LAST:event_btn_cancelActionPerformed
 
     private void btn_8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_8ActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + Integer.toString(8));
-        
-        ativarBotoes(true);
-        
-        if(operacao==0){
-            n1 = Double.parseDouble(lbl_res.getText());
+        if(contadorOperacao>1){
+            limparLabel();
         }else{
-            n2 = Double.parseDouble(lbl_res.getText());
+            label = lbl_res.getText();
+            lbl_res.setText(label + Integer.toString(8));
+
+            ativarBotoes(true);
+
+            if(operacao==0){
+                n1 = Double.parseDouble(lbl_res.getText());
+            }else{
+                n2 = Double.parseDouble(lbl_res.getText());
+            }
         }
     }//GEN-LAST:event_btn_8ActionPerformed
 
     private void btn_maisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_maisActionPerformed
             operacao=1;
+            contadorOperacao += 1;
+            
+            if(contadorOperacao==1){
+                label = lbl_res.getText();
+                lbl_res.setText(label + "+");
+                ativarBotoes(false);
+                limparLabel();
+            }
+            else{
+                    n1 = n1+n2;
+                    lbl_res.setText(formatadorInt.format(n1) + "+" + formatadorInt.format(n2));
 
-            label = lbl_res.getText();
-            lbl_res.setText(label + "+");
-            ativarBotoes(false);
-            limparLabel();
+            }
     }//GEN-LAST:event_btn_maisActionPerformed
 
     private void btn_9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_9ActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + Integer.toString(9));
-        
-        ativarBotoes(true);
-        
-        if(operacao==0){
-            n1 = Double.parseDouble(lbl_res.getText());
+        if(contadorOperacao>1){
+            limparLabel();
         }else{
-            n2 = Double.parseDouble(lbl_res.getText());
+            label = lbl_res.getText();
+            lbl_res.setText(label + Integer.toString(9));
+
+            ativarBotoes(true);
+
+            if(operacao==0){
+                n1 = Double.parseDouble(lbl_res.getText());
+            }else{
+                n2 = Double.parseDouble(lbl_res.getText());
+            }
         }
     }//GEN-LAST:event_btn_9ActionPerformed
 
     private void btn_4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_4ActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + Integer.toString(4));
-        
-        ativarBotoes(true);
-        
-        if(operacao==0){
-            n1 = Double.parseDouble(lbl_res.getText());
+        if(contadorOperacao>1){
+            limparLabel();
         }else{
-            n2 = Double.parseDouble(lbl_res.getText());
+            label = lbl_res.getText();
+            lbl_res.setText(label + Integer.toString(4));
+
+            ativarBotoes(true);
+
+            if(operacao==0){
+                n1 = Double.parseDouble(lbl_res.getText());
+            }else{
+                n2 = Double.parseDouble(lbl_res.getText());
+            }
         }
     }//GEN-LAST:event_btn_4ActionPerformed
 
     private void btn_5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_5ActionPerformed
         
-        
-        label = lbl_res.getText();
-        lbl_res.setText(label + Integer.toString(5));
-        
-        ativarBotoes(true);
-        
-        if(operacao==0){
-            n1 = Double.parseDouble(lbl_res.getText());
+        if(contadorOperacao>1){
+            limparLabel();
         }else{
-            n2 = Double.parseDouble(lbl_res.getText());
+            label = lbl_res.getText();
+            lbl_res.setText(label + Integer.toString(5));
+
+            ativarBotoes(true);
+
+            if(operacao==0){
+                n1 = Double.parseDouble(lbl_res.getText());
+            }else{
+                n2 = Double.parseDouble(lbl_res.getText());
+            }
         }
-        
-        
+      
     }//GEN-LAST:event_btn_5ActionPerformed
 
     private void btn_6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_6ActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + Integer.toString(6));
-        
-        ativarBotoes(true);
-        
-        if(operacao==0){
-            n1 = Double.parseDouble(lbl_res.getText());
+        if(contadorOperacao>1){
+            limparLabel();
         }else{
-            n2 = Double.parseDouble(lbl_res.getText());
+            label = lbl_res.getText();
+            lbl_res.setText(label + Integer.toString(6));
+
+            ativarBotoes(true);
+
+            if(operacao==0){
+                n1 = Double.parseDouble(lbl_res.getText());
+            }else{
+                n2 = Double.parseDouble(lbl_res.getText());
+            }
         }
     }//GEN-LAST:event_btn_6ActionPerformed
 
     private void btn_1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_1ActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + Integer.toString(1));
-        
-        ativarBotoes(true);
-        
-        if(operacao==0){
-            n1 = Double.parseDouble(lbl_res.getText());
+        if(contadorOperacao>1){
+            limparLabel();
         }else{
-            n2 = Double.parseDouble(lbl_res.getText());
+            label = lbl_res.getText();
+            lbl_res.setText(label + Integer.toString(1));
+
+            ativarBotoes(true);
+
+            if(operacao==0){
+                n1 = Double.parseDouble(lbl_res.getText());
+            }else{
+                n2 = Double.parseDouble(lbl_res.getText());
+            }
         }
     }//GEN-LAST:event_btn_1ActionPerformed
 
     private void btn_2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_2ActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + Integer.toString(2));
-        
-        ativarBotoes(true);
-        
-        if(operacao==0){
-            n1 = Double.parseDouble(lbl_res.getText());
+        if(contadorOperacao>1){
+            limparLabel();
         }else{
-            n2 = Double.parseDouble(lbl_res.getText());
+            label = lbl_res.getText();
+            lbl_res.setText(label + Integer.toString(2));
+
+            ativarBotoes(true);
+
+            if(operacao==0){
+                n1 = Double.parseDouble(lbl_res.getText());
+            }else{
+                n2 = Double.parseDouble(lbl_res.getText());
+            }
         }
     }//GEN-LAST:event_btn_2ActionPerformed
 
     private void btn_3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_3ActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + Integer.toString(3));
-        
-        ativarBotoes(true);
-        
-        if(operacao==0){
-            n1 = Double.parseDouble(lbl_res.getText());
+        if(contadorOperacao>1){
+            limparLabel();
         }else{
-            n2 = Double.parseDouble(lbl_res.getText());
+            label = lbl_res.getText();
+            lbl_res.setText(label + Integer.toString(3));
+
+            ativarBotoes(true);
+
+            if(operacao==0){
+                n1 = Double.parseDouble(lbl_res.getText());
+            }else{
+                n2 = Double.parseDouble(lbl_res.getText());
+            }
         }
     }//GEN-LAST:event_btn_3ActionPerformed
 
     private void btn_0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_0ActionPerformed
-        label = lbl_res.getText();
-        lbl_res.setText(label + Integer.toString(0));
-
-        if(operacao==0){
-            n1 = Double.parseDouble(lbl_res.getText());
+        if(contadorOperacao>1){
+            limparLabel();
         }else{
-            n2 = Double.parseDouble(lbl_res.getText());
+            label = lbl_res.getText();
+            lbl_res.setText(label + Integer.toString(0));
+
+            ativarBotoes(true);
+
+            if(operacao==0){
+                n1 = Double.parseDouble(lbl_res.getText());
+            }else{
+                n2 = Double.parseDouble(lbl_res.getText());
+            }
         }
     }//GEN-LAST:event_btn_0ActionPerformed
 
     private void btn_resActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_resActionPerformed
-        contador += 1;
-        if(contador<1){
+        contadorResultado += 1;
+        if(contadorResultado<1){
             switch(operacao){
                 case 1:
                     lbl_res.setText(formatadorInt.format(n1) + "+" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1+n2));       
@@ -865,7 +931,7 @@ public class Calculadora extends javax.swing.JFrame {
                     lbl_res.setText(formatadorInt.format(n1) + "-" +  formatadorInt.format(n2) + "=" + formatadorInt.format(n1-n2));
                     break;
                 case 3:
-                    lbl_res.setText(formatadorInt.format(n1) + "*" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1*n2));
+                    lbl_res.setText(formatadorDouble.format(n1) + "*" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1*n2));
                     break;
                 case 4:
                     lbl_res.setText(formatadorInt.format(n1) + "/" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1/n2));
@@ -882,7 +948,7 @@ public class Calculadora extends javax.swing.JFrame {
                     n1 = n1-n2;
                     break;
                 case 3:
-                    lbl_res.setText(formatadorInt.format(n1) + "*" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1*n2));
+                    lbl_res.setText(formatadorDouble.format(n1) + "*" +  formatadorInt.format(n2) + "=" + formatadorDouble.format(n1*n2));
                     n1 = n1*n2;
                     break;
                 case 4:
@@ -891,6 +957,8 @@ public class Calculadora extends javax.swing.JFrame {
                     break;
            }
        }
+        ativarBotoes2(true);
+        contadorOperacao=0;
        
     }//GEN-LAST:event_btn_resActionPerformed
 
@@ -900,11 +968,19 @@ public class Calculadora extends javax.swing.JFrame {
 
     private void btn_menosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_menosActionPerformed
             operacao=2;
+            contadorOperacao += 1;
+            
+            if(contadorOperacao==1){
+                label = lbl_res.getText();
+                lbl_res.setText(label + "-");
+                ativarBotoes(false);
+                limparLabel();
+            }
+            else{
+                    n1 = n1-n2;
+                    lbl_res.setText(formatadorInt.format(n1) + "-" + formatadorInt.format(n2));
 
-            label = lbl_res.getText();
-            lbl_res.setText(label + "-");
-            ativarBotoes(false);
-            limparLabel();
+            }
     }//GEN-LAST:event_btn_menosActionPerformed
 
     private void btn_multActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_multActionPerformed
