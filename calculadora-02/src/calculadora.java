@@ -17,7 +17,11 @@ public class calculadora extends javax.swing.JFrame {
     char operacao;
     
     
-    public void setarNumerosNoLabel(char numero){
+    public void setarNumerosLbTela(char numero){
+        if("0".equals(lblTela.getText()) && !".".equals(String.valueOf(numero))){
+            lblTela.setText("");
+        }
+        
         String texto = lblTela.getText();
         texto = texto+numero;
         lblTela.setText(texto);
@@ -31,6 +35,11 @@ public class calculadora extends javax.swing.JFrame {
     public void pegarNum2(){
         num2 = Double.parseDouble(lblTela.getText());
         lblTela.setText("");
+        
+    }
+    
+    public void setarValoresLbTemp(){
+        lblTemp.setText(num1 + " " +operacao);
     }
     
     public void calcular(){
@@ -52,7 +61,7 @@ public class calculadora extends javax.swing.JFrame {
     public calculadora() {
         initComponents();
         this.setLocationRelativeTo(null);
-        lblTela.setBorder(new EtchedBorder());
+        //lblTela.setBorder(new EtchedBorder());
     }
     
     
@@ -88,6 +97,7 @@ public class calculadora extends javax.swing.JFrame {
         btnIgual = new javax.swing.JButton();
         btnRaiz = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
+        lblTemp = new javax.swing.JLabel();
 
         jButton5.setText("jButton1");
 
@@ -95,6 +105,7 @@ public class calculadora extends javax.swing.JFrame {
 
         lblTela.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         lblTela.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        lblTela.setText("0");
 
         btn7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn7.setText("7");
@@ -122,6 +133,11 @@ public class calculadora extends javax.swing.JFrame {
 
         btnC.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btnC.setText("C");
+        btnC.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCActionPerformed(evt);
+            }
+        });
 
         btn8.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn8.setText("8");
@@ -236,6 +252,13 @@ public class calculadora extends javax.swing.JFrame {
         });
 
         btnBack.setText("<- Backspace");
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        lblTemp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -244,7 +267,10 @@ public class calculadora extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lblTela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(lblTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblTela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -284,7 +310,9 @@ public class calculadora extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(lblTela, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblTela, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lblTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -347,67 +375,71 @@ public class calculadora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
-        setarNumerosNoLabel('5');
+        setarNumerosLbTela('5');
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        setarNumerosNoLabel('1');
+        setarNumerosLbTela('1');
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
-        setarNumerosNoLabel('2');
+        setarNumerosLbTela('2');
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        setarNumerosNoLabel('3');
+        setarNumerosLbTela('3');
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
-        setarNumerosNoLabel('4');
+        setarNumerosLbTela('4');
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
-        setarNumerosNoLabel('6');
+        setarNumerosLbTela('6');
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
-        setarNumerosNoLabel('7');
+        setarNumerosLbTela('7');
     }//GEN-LAST:event_btn7ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
-        setarNumerosNoLabel('8');
+        setarNumerosLbTela('8');
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
-        setarNumerosNoLabel('9');
+        setarNumerosLbTela('9');
     }//GEN-LAST:event_btn9ActionPerformed
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
-        setarNumerosNoLabel('0');
+        setarNumerosLbTela('0');
     }//GEN-LAST:event_btn0ActionPerformed
 
     private void btnPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPontoActionPerformed
-        setarNumerosNoLabel('.');
+        setarNumerosLbTela('.');
     }//GEN-LAST:event_btnPontoActionPerformed
 
     private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
         pegarNum1();
         operacao='+';
+        setarValoresLbTemp();
     }//GEN-LAST:event_btnMaisActionPerformed
 
     private void btnDivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivActionPerformed
         pegarNum1();
         operacao='/';
+        setarValoresLbTemp();
     }//GEN-LAST:event_btnDivActionPerformed
 
     private void btnMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultActionPerformed
         pegarNum1();
         operacao='*';
+        setarValoresLbTemp();
     }//GEN-LAST:event_btnMultActionPerformed
 
     private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosActionPerformed
         pegarNum1();
         operacao='-';
+        setarValoresLbTemp();
     }//GEN-LAST:event_btnMenosActionPerformed
 
     private void btnRaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaizActionPerformed
@@ -417,7 +449,28 @@ public class calculadora extends javax.swing.JFrame {
     private void btnIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIgualActionPerformed
         pegarNum2();
         calcular();
+        lblTemp.setText(lblTemp.getText() + " " + num2);
     }//GEN-LAST:event_btnIgualActionPerformed
+
+    private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
+        num1 = 0;
+        num2 = 0;
+        resultado = 0;
+        lblTela.setText("");
+    }//GEN-LAST:event_btnCActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        String valor_lblTela = lblTela.getText();
+        
+        if(lblTela.getText().length()>1){
+            valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-1);
+            lblTela.setText(valor_lblTela);
+        }else{
+            lblTela.setText("0");
+        }
+
+        
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -430,7 +483,7 @@ public class calculadora extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -478,5 +531,6 @@ public class calculadora extends javax.swing.JFrame {
     private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel lblTela;
+    private javax.swing.JLabel lblTemp;
     // End of variables declaration//GEN-END:variables
 }
