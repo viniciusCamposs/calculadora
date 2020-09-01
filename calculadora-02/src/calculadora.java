@@ -1,4 +1,5 @@
 
+import javax.swing.JOptionPane;
 import javax.swing.border.EtchedBorder;
 
 /*
@@ -29,7 +30,7 @@ public class calculadora extends javax.swing.JFrame {
     
     public void pegarNum1(){
         num1 = Double.parseDouble(lblTela.getText());
-        lblTela.setText("");
+        lblTela.setText("0");
     }
     
     public void pegarNum2(){
@@ -43,7 +44,10 @@ public class calculadora extends javax.swing.JFrame {
     }
     
     public void calcular(){
-        if(num1!=0 && num2!=0){
+        if(num2==0 && operacao=='/'){
+            JOptionPane.showMessageDialog(null, "Operação inválida!"); 
+            reiniciarCalculadora();
+        }else{
             if(operacao == '+'){
                 resultado = num1 + num2;
             }else if(operacao == '-'){
@@ -53,9 +57,17 @@ public class calculadora extends javax.swing.JFrame {
             }else{
                 resultado = num1 / num2;
             }
-        
-            lblTela.setText(String.valueOf(resultado));
         }
+
+            lblTela.setText(String.valueOf(resultado));
+    }
+    
+    public void reiniciarCalculadora() {
+        num1 = 0;
+        num2 = 0;
+        resultado = 0;
+        lblTela.setText("0");
+        lblTemp.setText("");
     }
 
     public calculadora() {
@@ -453,18 +465,24 @@ public class calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnIgualActionPerformed
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
-        num1 = 0;
-        num2 = 0;
-        resultado = 0;
-        lblTela.setText("");
+        reiniciarCalculadora();
     }//GEN-LAST:event_btnCActionPerformed
+
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
         String valor_lblTela = lblTela.getText();
         
         if(lblTela.getText().length()>1){
-            valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-1);
+
+            if(".".equals(valor_lblTela.substring(valor_lblTela.length()-2, valor_lblTela.length()-1))){
+                valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-2);
+                lblTela.setText(valor_lblTela);
+            }else{
+                valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-1);
+            }
+            
             lblTela.setText(valor_lblTela);
+            
         }else{
             lblTela.setText("0");
         }
