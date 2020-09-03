@@ -26,11 +26,13 @@ public class calculadora extends javax.swing.JFrame {
         String texto = lblTela.getText();
         texto = texto+numero;
         lblTela.setText(texto);
+        jPanel1.requestFocus();
     }
     
     public void pegarNum1(){
         num1 = Double.parseDouble(lblTela.getText());
         lblTela.setText("0");
+        jPanel1.requestFocus();
     }
     
     public void pegarNum2(){
@@ -54,12 +56,15 @@ public class calculadora extends javax.swing.JFrame {
                 resultado = num1 - num2;
             }else if(operacao == '*'){
                 resultado = num1 * num2;
-            }else{
+            }else if(operacao == '/'){
                 resultado = num1 / num2;
+            }else{
+                resultado = Math.sqrt(num1);
             }
         }
 
             lblTela.setText(String.valueOf(resultado));
+            jPanel1.requestFocus();
     }
     
     public void reiniciarCalculadora() {
@@ -73,6 +78,7 @@ public class calculadora extends javax.swing.JFrame {
     public calculadora() {
         initComponents();
         this.setLocationRelativeTo(null);
+        jPanel1.setFocusable(true);
         //lblTela.setBorder(new EtchedBorder());
     }
     
@@ -114,6 +120,12 @@ public class calculadora extends javax.swing.JFrame {
         jButton5.setText("jButton1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                jPanel1KeyPressed(evt);
+            }
+        });
 
         lblTela.setFont(new java.awt.Font("Calibri", 0, 24)); // NOI18N
         lblTela.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -456,6 +468,9 @@ public class calculadora extends javax.swing.JFrame {
 
     private void btnRaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaizActionPerformed
         pegarNum1();
+        operacao='√';
+        calcular();
+        setarValoresLbTemp();
     }//GEN-LAST:event_btnRaizActionPerformed
 
     private void btnIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIgualActionPerformed
@@ -466,6 +481,7 @@ public class calculadora extends javax.swing.JFrame {
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
         reiniciarCalculadora();
+        jPanel1.requestFocus();
     }//GEN-LAST:event_btnCActionPerformed
 
 
@@ -486,9 +502,23 @@ public class calculadora extends javax.swing.JFrame {
         }else{
             lblTela.setText("0");
         }
-
-        
+        jPanel1.requestFocus();
     }//GEN-LAST:event_btnBackActionPerformed
+
+    private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
+        if(evt.getKeyChar()=='0' ||
+           evt.getKeyChar()=='1' ||
+           evt.getKeyChar()=='2' ||
+           evt.getKeyChar()=='3' ||
+           evt.getKeyChar()=='4' ||
+           evt.getKeyChar()=='5' ||
+           evt.getKeyChar()=='6' ||     
+           evt.getKeyChar()=='7' ||
+           evt.getKeyChar()=='8' ||
+           evt.getKeyChar()=='9'){
+            setarNumerosLbTela(evt.getKeyChar());
+        }
+    }//GEN-LAST:event_jPanel1KeyPressed
 
     /**
      * @param args the command line arguments
