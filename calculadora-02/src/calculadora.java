@@ -565,8 +565,10 @@ public class calculadora extends javax.swing.JFrame {
         
         if(num!=0){
             num = num * -1;
+            lblTela.setText(String.valueOf(num));
         }
-        lblTela.setText(String.valueOf(num));
+        jPanel1.requestFocus();
+        
     }//GEN-LAST:event_btnMaisMenosActionPerformed
 
     /**
