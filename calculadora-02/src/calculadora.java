@@ -19,14 +19,19 @@ public class calculadora extends javax.swing.JFrame {
     
     
     public void setarNumerosLbTela(char numero){
+        
+        
         if("0".equals(lblTela.getText()) && !".".equals(String.valueOf(numero))){
             lblTela.setText("");
         }
         
         String texto = lblTela.getText();
-        texto = texto+numero;
-        lblTela.setText(texto);
-        jPanel1.requestFocus();
+        
+        if(texto.length()<=14){
+            texto = texto+numero;
+            lblTela.setText(texto);
+            jPanel1.requestFocus();
+        }
     }
     
     public void pegarNum1(){
@@ -82,6 +87,27 @@ public class calculadora extends javax.swing.JFrame {
         //lblTela.setBorder(new EtchedBorder());
     }
     
+    public void backspace() {
+        String valor_lblTela = lblTela.getText();
+        
+        if(lblTela.getText().length()>1){
+            
+            if(".".equals(valor_lblTela.substring(valor_lblTela.length()-2, valor_lblTela.length()-1))){
+                valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-2);
+                lblTela.setText(valor_lblTela);
+            }else{
+                valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-1);
+            }
+            
+            lblTela.setText(valor_lblTela);
+            
+        }else{
+            lblTela.setText("0");
+        }
+        jPanel1.requestFocus();
+    }
+        
+
     
 
     /**
@@ -116,6 +142,7 @@ public class calculadora extends javax.swing.JFrame {
         btnRaiz = new javax.swing.JButton();
         btnBack = new javax.swing.JButton();
         lblTemp = new javax.swing.JLabel();
+        btnMaisMenos = new javax.swing.JButton();
 
         jButton5.setText("jButton1");
 
@@ -284,19 +311,23 @@ public class calculadora extends javax.swing.JFrame {
 
         lblTemp.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
 
+        btnMaisMenos.setText("+ -");
+        btnMaisMenos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMaisMenosActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(lblTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(lblTela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btn4)
@@ -314,12 +345,11 @@ public class calculadora extends javax.swing.JFrame {
                                     .addComponent(btn6)
                                     .addComponent(btn3)
                                     .addComponent(btnPonto)
-                                    .addComponent(btn9)))
-                            .addComponent(btnBack, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                    .addComponent(btn9))))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnIgual, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnIgual, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(btnMenos)
                                     .addComponent(btnDiv)
@@ -327,18 +357,28 @@ public class calculadora extends javax.swing.JFrame {
                                 .addGap(12, 12, 12)
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(btnRaiz, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(btnMais))))))
-                .addGap(10, 10, 10))
+                                    .addComponent(btnMais))))
+                        .addGap(10, 10, 10))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTemp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(btnMaisMenos)
+                                .addGap(14, 14, 14)
+                                .addComponent(lblTela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addContainerGap())))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblTela, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addComponent(lblTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(9, 9, 9)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblTela, javax.swing.GroupLayout.DEFAULT_SIZE, 55, Short.MAX_VALUE)
+                    .addComponent(btnMaisMenos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -366,7 +406,7 @@ public class calculadora extends javax.swing.JFrame {
                                 .addComponent(btn3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnPonto)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                        .addGap(18, 18, 18)
                         .addComponent(btnBack))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -374,13 +414,13 @@ public class calculadora extends javax.swing.JFrame {
                                 .addComponent(btnDiv, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(btnMult))
-                            .addComponent(btnMais, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(btnMais, javax.swing.GroupLayout.PREFERRED_SIZE, 61, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(btnMenos)
                             .addComponent(btnRaiz))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnIgual, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btnIgual, javax.swing.GroupLayout.PREFERRED_SIZE, 66, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
 
@@ -486,24 +526,9 @@ public class calculadora extends javax.swing.JFrame {
 
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        String valor_lblTela = lblTela.getText();
-        
-        if(lblTela.getText().length()>1){
-
-            if(".".equals(valor_lblTela.substring(valor_lblTela.length()-2, valor_lblTela.length()-1))){
-                valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-2);
-                lblTela.setText(valor_lblTela);
-            }else{
-                valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-1);
-            }
-            
-            lblTela.setText(valor_lblTela);
-            
-        }else{
-            lblTela.setText("0");
-        }
-        jPanel1.requestFocus();
+        backspace();
     }//GEN-LAST:event_btnBackActionPerformed
+
 
     private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
         if(evt.getKeyChar()=='0' ||
@@ -517,8 +542,32 @@ public class calculadora extends javax.swing.JFrame {
            evt.getKeyChar()=='8' ||
            evt.getKeyChar()=='9'){
             setarNumerosLbTela(evt.getKeyChar());
+        }else if(evt.getKeyChar() == '-' ||
+                 evt.getKeyChar() == '+' ||
+                 evt.getKeyChar() == '/' ||
+                 evt.getKeyChar() == '*'){
+            pegarNum1();
+            
+            operacao = evt.getKeyChar();
+            setarValoresLbTemp();
+        }else if(evt.getKeyCode()==10){
+            pegarNum2();
+            calcular();
+            lblTemp.setText(lblTemp.getText() + "" + num2);
+        }else if(evt.getKeyCode()==8){
+            backspace();
         }
     }//GEN-LAST:event_jPanel1KeyPressed
+
+    private void btnMaisMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisMenosActionPerformed
+        //String numero = lblTela.getText();
+        double num = Double.parseDouble(lblTela.getText());
+        
+        if(num!=0){
+            num = num * -1;
+        }
+        lblTela.setText(String.valueOf(num));
+    }//GEN-LAST:event_btnMaisMenosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -572,6 +621,7 @@ public class calculadora extends javax.swing.JFrame {
     private javax.swing.JButton btnDiv;
     private javax.swing.JButton btnIgual;
     private javax.swing.JButton btnMais;
+    private javax.swing.JButton btnMaisMenos;
     private javax.swing.JButton btnMenos;
     private javax.swing.JButton btnMult;
     private javax.swing.JButton btnPonto;
