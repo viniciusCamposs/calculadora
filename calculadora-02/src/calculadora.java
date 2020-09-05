@@ -1,4 +1,6 @@
 
+import java.awt.Color;
+import java.awt.Toolkit;
 import javax.swing.JOptionPane;
 import javax.swing.border.EtchedBorder;
 
@@ -84,6 +86,7 @@ public class calculadora extends javax.swing.JFrame {
         initComponents();
         this.setLocationRelativeTo(null);
         jPanel1.setFocusable(true);
+        incrementarIcone();
         //lblTela.setBorder(new EtchedBorder());
     }
     
@@ -120,6 +123,7 @@ public class calculadora extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton5 = new javax.swing.JButton();
+        lblIcon = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         lblTela = new javax.swing.JLabel();
         btn7 = new javax.swing.JButton();
@@ -146,9 +150,11 @@ public class calculadora extends javax.swing.JFrame {
 
         jButton5.setText("jButton1");
 
+        lblIcon.setIcon(new javax.swing.ImageIcon(getClass().getResource("/calculator.png"))); // NOI18N
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jPanel1.setBackground(new java.awt.Color(0, 0, 0));
+        jPanel1.setBackground(new java.awt.Color(51, 51, 51));
         jPanel1.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jPanel1KeyPressed(evt);
@@ -164,6 +170,14 @@ public class calculadora extends javax.swing.JFrame {
         btn7.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn7.setText("7");
         btn7.setBorderPainted(false);
+        btn7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn7MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn7MouseExited(evt);
+            }
+        });
         btn7.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn7ActionPerformed(evt);
@@ -174,6 +188,14 @@ public class calculadora extends javax.swing.JFrame {
         btn4.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn4.setText("4");
         btn4.setBorderPainted(false);
+        btn4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn4MouseExited(evt);
+            }
+        });
         btn4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn4ActionPerformed(evt);
@@ -184,6 +206,14 @@ public class calculadora extends javax.swing.JFrame {
         btn1.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn1.setText("1");
         btn1.setBorderPainted(false);
+        btn1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn1MouseExited(evt);
+            }
+        });
         btn1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn1ActionPerformed(evt);
@@ -191,9 +221,17 @@ public class calculadora extends javax.swing.JFrame {
         });
 
         btnC.setBackground(new java.awt.Color(153, 153, 153));
-        btnC.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnC.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btnC.setText("C");
         btnC.setBorderPainted(false);
+        btnC.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnCMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnCMouseExited(evt);
+            }
+        });
         btnC.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCActionPerformed(evt);
@@ -204,6 +242,14 @@ public class calculadora extends javax.swing.JFrame {
         btn8.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn8.setText("8");
         btn8.setBorderPainted(false);
+        btn8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn8MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn8MouseExited(evt);
+            }
+        });
         btn8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn8ActionPerformed(evt);
@@ -214,6 +260,14 @@ public class calculadora extends javax.swing.JFrame {
         btn5.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn5.setText("5");
         btn5.setBorderPainted(false);
+        btn5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn5MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn5MouseExited(evt);
+            }
+        });
         btn5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn5ActionPerformed(evt);
@@ -224,6 +278,14 @@ public class calculadora extends javax.swing.JFrame {
         btn2.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn2.setText("2");
         btn2.setBorderPainted(false);
+        btn2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn2MouseExited(evt);
+            }
+        });
         btn2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn2ActionPerformed(evt);
@@ -234,6 +296,14 @@ public class calculadora extends javax.swing.JFrame {
         btn0.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn0.setText("0");
         btn0.setBorderPainted(false);
+        btn0.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn0MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn0MouseExited(evt);
+            }
+        });
         btn0.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn0ActionPerformed(evt);
@@ -244,6 +314,14 @@ public class calculadora extends javax.swing.JFrame {
         btn9.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn9.setText("9");
         btn9.setBorderPainted(false);
+        btn9.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn9MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn9MouseExited(evt);
+            }
+        });
         btn9.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn9ActionPerformed(evt);
@@ -254,6 +332,14 @@ public class calculadora extends javax.swing.JFrame {
         btn6.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn6.setText("6");
         btn6.setBorderPainted(false);
+        btn6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn6MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn6MouseExited(evt);
+            }
+        });
         btn6.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn6ActionPerformed(evt);
@@ -264,16 +350,32 @@ public class calculadora extends javax.swing.JFrame {
         btn3.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
         btn3.setText("3");
         btn3.setBorderPainted(false);
+        btn3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btn3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btn3MouseExited(evt);
+            }
+        });
         btn3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn3ActionPerformed(evt);
             }
         });
 
-        btnPonto.setBackground(new java.awt.Color(204, 204, 204));
-        btnPonto.setFont(new java.awt.Font("Calibri", 0, 14)); // NOI18N
+        btnPonto.setBackground(new java.awt.Color(153, 153, 153));
+        btnPonto.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btnPonto.setText(".");
         btnPonto.setBorderPainted(false);
+        btnPonto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnPontoMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnPontoMouseExited(evt);
+            }
+        });
         btnPonto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnPontoActionPerformed(evt);
@@ -284,6 +386,14 @@ public class calculadora extends javax.swing.JFrame {
         btnDiv.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btnDiv.setText("/");
         btnDiv.setBorderPainted(false);
+        btnDiv.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnDivMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnDivMouseExited(evt);
+            }
+        });
         btnDiv.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnDivActionPerformed(evt);
@@ -294,6 +404,14 @@ public class calculadora extends javax.swing.JFrame {
         btnMult.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btnMult.setText("x");
         btnMult.setBorderPainted(false);
+        btnMult.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMultMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMultMouseExited(evt);
+            }
+        });
         btnMult.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMultActionPerformed(evt);
@@ -304,6 +422,14 @@ public class calculadora extends javax.swing.JFrame {
         btnMenos.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btnMenos.setText("-");
         btnMenos.setBorderPainted(false);
+        btnMenos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMenosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMenosMouseExited(evt);
+            }
+        });
         btnMenos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMenosActionPerformed(evt);
@@ -314,6 +440,14 @@ public class calculadora extends javax.swing.JFrame {
         btnMais.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         btnMais.setText("+");
         btnMais.setBorderPainted(false);
+        btnMais.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMaisMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMaisMouseExited(evt);
+            }
+        });
         btnMais.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMaisActionPerformed(evt);
@@ -324,6 +458,14 @@ public class calculadora extends javax.swing.JFrame {
         btnIgual.setFont(new java.awt.Font("Calibri", 1, 24)); // NOI18N
         btnIgual.setText("=");
         btnIgual.setBorderPainted(false);
+        btnIgual.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnIgualMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnIgualMouseExited(evt);
+            }
+        });
         btnIgual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnIgualActionPerformed(evt);
@@ -334,6 +476,14 @@ public class calculadora extends javax.swing.JFrame {
         btnRaiz.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btnRaiz.setText("√");
         btnRaiz.setBorderPainted(false);
+        btnRaiz.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnRaizMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnRaizMouseExited(evt);
+            }
+        });
         btnRaiz.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnRaizActionPerformed(evt);
@@ -344,6 +494,14 @@ public class calculadora extends javax.swing.JFrame {
         btnBack.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btnBack.setText("<- Backspace");
         btnBack.setBorderPainted(false);
+        btnBack.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnBackMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnBackMouseExited(evt);
+            }
+        });
         btnBack.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnBackActionPerformed(evt);
@@ -357,6 +515,14 @@ public class calculadora extends javax.swing.JFrame {
         btnMaisMenos.setFont(new java.awt.Font("Calibri", 1, 14)); // NOI18N
         btnMaisMenos.setText("+ -");
         btnMaisMenos.setBorderPainted(false);
+        btnMaisMenos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                btnMaisMenosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                btnMaisMenosMouseExited(evt);
+            }
+        });
         btnMaisMenos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnMaisMenosActionPerformed(evt);
@@ -367,12 +533,12 @@ public class calculadora extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addComponent(lblTemp, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(lblTela, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lblTemp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblTela, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -423,11 +589,11 @@ public class calculadora extends javax.swing.JFrame {
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lblTemp, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(5, 5, 5)
                 .addComponent(lblTela)
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -441,7 +607,7 @@ public class calculadora extends javax.swing.JFrame {
                             .addComponent(btn5)
                             .addComponent(btn6)
                             .addComponent(btnMult, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(btnMais, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(btnMais, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(5, 5, 5)
@@ -616,6 +782,166 @@ public class calculadora extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btnMaisMenosActionPerformed
 
+    private void btn7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn7MouseEntered
+        btn7.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btn7MouseEntered
+
+    private void btn7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn7MouseExited
+        btn7.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btn7MouseExited
+
+    private void btn8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn8MouseEntered
+        btn8.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btn8MouseEntered
+
+    private void btn8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn8MouseExited
+        btn8.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btn8MouseExited
+
+    private void btn9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn9MouseEntered
+        btn9.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btn9MouseEntered
+
+    private void btn9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn9MouseExited
+        btn9.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btn9MouseExited
+
+    private void btn4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn4MouseEntered
+        btn4.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btn4MouseEntered
+
+    private void btn4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn4MouseExited
+        btn4.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btn4MouseExited
+
+    private void btn5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn5MouseEntered
+        btn5.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btn5MouseEntered
+
+    private void btn5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn5MouseExited
+        btn5.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btn5MouseExited
+
+    private void btn6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn6MouseEntered
+        btn6.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btn6MouseEntered
+
+    private void btn6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn6MouseExited
+        btn6.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btn6MouseExited
+
+    private void btn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn1MouseEntered
+        btn1.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btn1MouseEntered
+
+    private void btn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn1MouseExited
+        btn1.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btn1MouseExited
+
+    private void btn2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn2MouseExited
+        btn2.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btn2MouseExited
+
+    private void btn3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn3MouseExited
+        btn3.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btn3MouseExited
+
+    private void btn2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn2MouseEntered
+        btn2.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btn2MouseEntered
+
+    private void btn3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn3MouseEntered
+        btn3.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btn3MouseEntered
+
+    private void btn0MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn0MouseEntered
+        btn0.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btn0MouseEntered
+
+    private void btn0MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn0MouseExited
+        btn0.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btn0MouseExited
+
+    private void btnDivMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDivMouseEntered
+        btnDiv.setBackground(new Color(255,224,132));
+    }//GEN-LAST:event_btnDivMouseEntered
+
+    private void btnDivMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDivMouseExited
+        btnDiv.setBackground(new Color(255,204,51));
+    }//GEN-LAST:event_btnDivMouseExited
+
+    private void btnMaisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaisMouseEntered
+        btnMais.setBackground(new Color(255,224,132));
+    }//GEN-LAST:event_btnMaisMouseEntered
+
+    private void btnMultMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMultMouseEntered
+        btnMult.setBackground(new Color(255,224,132));
+    }//GEN-LAST:event_btnMultMouseEntered
+
+    private void btnMenosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenosMouseEntered
+        btnMenos.setBackground(new Color(255,224,132));
+    }//GEN-LAST:event_btnMenosMouseEntered
+
+    private void btnRaizMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRaizMouseEntered
+        btnRaiz.setBackground(new Color(255,224,132));
+    }//GEN-LAST:event_btnRaizMouseEntered
+
+    private void btnMaisMenosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaisMenosMouseEntered
+        btnMaisMenos.setBackground(new Color(255,224,132));
+    }//GEN-LAST:event_btnMaisMenosMouseEntered
+
+    private void btnIgualMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIgualMouseEntered
+        btnIgual.setBackground(new Color(255,224,132));
+    }//GEN-LAST:event_btnIgualMouseEntered
+
+    private void btnIgualMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIgualMouseExited
+        btnIgual.setBackground(new Color(255,204,51));
+    }//GEN-LAST:event_btnIgualMouseExited
+
+    private void btnMaisMenosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaisMenosMouseExited
+        btnMaisMenos.setBackground(new Color(255,204,51));
+    }//GEN-LAST:event_btnMaisMenosMouseExited
+
+    private void btnMenosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenosMouseExited
+        btnMenos.setBackground(new Color(255,204,51));
+    }//GEN-LAST:event_btnMenosMouseExited
+
+    private void btnRaizMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRaizMouseExited
+        btnRaiz.setBackground(new Color(255,204,51));
+    }//GEN-LAST:event_btnRaizMouseExited
+
+    private void btnMaisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaisMouseExited
+        btnMais.setBackground(new Color(255,204,51));
+    }//GEN-LAST:event_btnMaisMouseExited
+
+    private void btnMultMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMultMouseExited
+        btnMult.setBackground(new Color(255,204,51));
+    }//GEN-LAST:event_btnMultMouseExited
+
+    private void btnBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseEntered
+        btnBack.setBackground(new Color(255,224,132));
+    }//GEN-LAST:event_btnBackMouseEntered
+
+    private void btnBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseExited
+        btnBack.setBackground(new Color(255,204,51));
+    }//GEN-LAST:event_btnBackMouseExited
+
+    private void btnCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCMouseExited
+        btnC.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btnCMouseExited
+
+    private void btnPontoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPontoMouseExited
+        btnPonto.setBackground(new Color(153,153,153));
+    }//GEN-LAST:event_btnPontoMouseExited
+
+    private void btnCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCMouseEntered
+        btnC.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btnCMouseEntered
+
+    private void btnPontoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPontoMouseEntered
+        btnPonto.setBackground(new Color(204,204,204));
+    }//GEN-LAST:event_btnPontoMouseEntered
+
     /**
      * @param args the command line arguments
      */
@@ -675,7 +1001,12 @@ public class calculadora extends javax.swing.JFrame {
     private javax.swing.JButton btnRaiz;
     private javax.swing.JButton jButton5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel lblIcon;
     private javax.swing.JLabel lblTela;
     private javax.swing.JLabel lblTemp;
     // End of variables declaration//GEN-END:variables
+
+    private void incrementarIcone() {
+        setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("calculator.png")));
+    }
 }
