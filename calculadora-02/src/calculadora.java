@@ -16,8 +16,16 @@ import javax.swing.border.EtchedBorder;
  */
 public class calculadora extends javax.swing.JFrame {
 
-    double num1, num2, resultado, contador=0;
-    char operacao;
+    double num1, num2, resultado, contador=0; //CRIAÇÃO DAS VARIAVEIS TIPO DOUBLE.
+    char operacao; //CRIAÇÃO DA VARIAVEL TIPO CHAR.
+    
+    
+    public calculadora() {
+        initComponents();
+        this.setLocationRelativeTo(null); //CODIGO PARA A CALCULADORA ABRIR NO MEIO DA TELA.
+        jPanel1.setFocusable(true); //CODIGO PARA O FOCO IR PRO JPANEL QUANDO A CALCULADORA FOR ACIONADA.
+        incrementarIcone(); //CODIGO PARA INCREMENTAR O ICONE NA BARRA SUPERIOR.
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -556,108 +564,109 @@ public class calculadora extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn5ActionPerformed
-        setarNumerosLbTela('5');
+        setarNumerosLbTela('5'); //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA INCREMENTAR O NUMERO DIGITADO NA TELA.
     }//GEN-LAST:event_btn5ActionPerformed
 
     private void btn1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn1ActionPerformed
-        setarNumerosLbTela('1');
+        setarNumerosLbTela('1'); //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA INCREMENTAR O NUMERO DIGITADO NA TELA.
     }//GEN-LAST:event_btn1ActionPerformed
 
     private void btn2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn2ActionPerformed
-        setarNumerosLbTela('2');
+        setarNumerosLbTela('2'); //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA INCREMENTAR O NUMERO DIGITADO NA TELA.
     }//GEN-LAST:event_btn2ActionPerformed
 
     private void btn3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn3ActionPerformed
-        setarNumerosLbTela('3');
+        setarNumerosLbTela('3'); //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA INCREMENTAR O NUMERO DIGITADO NA TELA.
     }//GEN-LAST:event_btn3ActionPerformed
 
     private void btn4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn4ActionPerformed
-        setarNumerosLbTela('4');
+        setarNumerosLbTela('4'); //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA INCREMENTAR O NUMERO DIGITADO NA TELA.
     }//GEN-LAST:event_btn4ActionPerformed
 
     private void btn6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn6ActionPerformed
-        setarNumerosLbTela('6');
+        setarNumerosLbTela('6'); //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA INCREMENTAR O NUMERO DIGITADO NA TELA.
     }//GEN-LAST:event_btn6ActionPerformed
 
     private void btn7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn7ActionPerformed
-        setarNumerosLbTela('7');
+        setarNumerosLbTela('7'); //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA INCREMENTAR O NUMERO DIGITADO NA TELA.
     }//GEN-LAST:event_btn7ActionPerformed
 
     private void btn8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn8ActionPerformed
-        setarNumerosLbTela('8');
+        setarNumerosLbTela('8'); //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA INCREMENTAR O NUMERO DIGITADO NA TELA.
     }//GEN-LAST:event_btn8ActionPerformed
 
     private void btn9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn9ActionPerformed
-        setarNumerosLbTela('9');
+        setarNumerosLbTela('9'); //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA INCREMENTAR O NUMERO DIGITADO NA TELA.
     }//GEN-LAST:event_btn9ActionPerformed
 
     private void btn0ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn0ActionPerformed
-        setarNumerosLbTela('0');
+        setarNumerosLbTela('0'); //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA INCREMENTAR O NUMERO DIGITADO NA TELA.
     }//GEN-LAST:event_btn0ActionPerformed
 
     private void btnPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPontoActionPerformed
-        setarNumerosLbTela('.');
-        btnPonto.setEnabled(false);
+        setarNumerosLbTela('.');  //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA INCREMENTAR O PONTO NA TELA.
+        btnPonto.setEnabled(false); //CODIGO PARA QUE O PONTO SEJA DESATIVADO APÓS SER DIGITADO UMA VEZ. EVITANDO ERROS.
     }//GEN-LAST:event_btnPontoActionPerformed
 
     private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
-        pegarNum1();
-        operacao='+';
-        setarValoresLbTemp();
+        pegarNum1(); //CHAMADA DO METODO PEGARNUM1() PARA PEGAR O PRIMEIRO NUMERO DIGITADO.
+        operacao='+'; //CODIGO PARA IDENTIFICAR A OPERACAO A SER REALIZADA.
+        setarValoresLbTemp(); //CHAMADA DO METODO SETARVALORESLBTEMP() PARA SETAR OS NUMEROS NO LBLTEMP.
     }//GEN-LAST:event_btnMaisActionPerformed
 
     private void btnDivActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnDivActionPerformed
-        pegarNum1();
-        operacao='/';
-        setarValoresLbTemp();
+        pegarNum1(); //CHAMADA DO METODO PEGARNUM1() PARA PEGAR O PRIMEIRO NUMERO DIGITADO.
+        operacao='/'; //CODIGO PARA IDENTIFICAR A OPERACAO A SER REALIZADA.
+        setarValoresLbTemp(); //CHAMADA DO METODO SETARVALORESLBTEMP() PARA SETAR OS NUMEROS NO LBLTEMP.
     }//GEN-LAST:event_btnDivActionPerformed
 
     private void btnMultActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMultActionPerformed
-        pegarNum1();
-        operacao='*';
-        setarValoresLbTemp();
+        pegarNum1(); //CHAMADA DO METODO PEGARNUM1() PARA PEGAR O PRIMEIRO NUMERO DIGITADO.
+        operacao='*'; //CODIGO PARA IDENTIFICAR A OPERACAO A SER REALIZADA.
+        setarValoresLbTemp(); //CHAMADA DO METODO SETARVALORESLBTEMP() PARA SETAR OS NUMEROS NO LBLTEMP.
     }//GEN-LAST:event_btnMultActionPerformed
 
     private void btnMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMenosActionPerformed
-        pegarNum1();
-        operacao='-';
-        setarValoresLbTemp();
+        pegarNum1(); //CHAMADA DO METODO PEGARNUM1() PARA PEGAR O PRIMEIRO NUMERO DIGITADO.
+        operacao='-'; //CODIGO PARA IDENTIFICAR A OPERACAO A SER REALIZADA.
+        setarValoresLbTemp(); //CHAMADA DO METODO SETARVALORESLBTEMP() PARA SETAR OS NUMEROS NO LBLTEMP.
     }//GEN-LAST:event_btnMenosActionPerformed
 
     private void btnRaizActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnRaizActionPerformed
-        pegarNum1();
-        operacao='√';
-        calcular();
-        setarValoresLbTemp();
+        pegarNum1(); //CHAMADA DO METODO PEGARNUM1() PARA PEGAR O PRIMEIRO NUMERO DIGITADO.
+        operacao='√'; //CODIGO PARA IDENTIFICAR A OPERACAO A SER REALIZADA.
+        calcular(); //CHAMADA DO METODO CALCULAR() PARA CALCULAR OS NÚMEROS DE ACORDO COM SUA OPERACAO.
+        setarValoresLbTemp(); //CHAMADA DO METODO SETARVALORESLBTEMP() PARA SETAR OS NUMEROS NO LBLTEMP.
     }//GEN-LAST:event_btnRaizActionPerformed
 
     private void btnIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIgualActionPerformed
         
+        //CONDIÇÃO UTILIZADA PARA QUE SEJA POSSIVEL REALIZAR DUAS OU MAIS OPERAÇÕES APENAS APERTANDO = DUAS VEZES.
         if(contador==0){
-            pegarNum2();
-            calcular();
-            lblTemp.setText(lblTemp.getText() + " " + num2 + " =");
+            pegarNum2(); //CHAMADA DO METODO PEGARNUM2() PARA PEGAR O SEGUNDO NUMERO DIGITADO.
+            calcular(); //CHAMADA DO METODO CALCULAR() PARA CALCULAR OS NÚMEROS DE ACORDO COM SUA OPERACAO.
+            lblTemp.setText(lblTemp.getText() + " " + num2 + " ="); //CODIGO PARA INCREMENTAR O SEGUNDO NUMERO DIGITADO JUNTO AO PRIMEIRO + A SUA OPERAÇÃO NO LBLTEMP.
         }else{
-            calcular();
-            lblTemp.setText(num1+ " " + operacao + " " + num2 + " =");
+            calcular(); //CHAMADA DO METODO CALCULAR() PARA CALCULAR OS NÚMEROS DE ACORDO COM SUA OPERACAO.
+            lblTemp.setText(num1+ " " + operacao + " " + num2 + " ="); //CODIGO PARA INCREMENTAR O SEGUNDO NUMERO DIGITADO JUNTO AO PRIMEIRO + A SUA OPERAÇÃO NO LBLTEMP.
         }
-        contador++;
+        contador++; // INCREMENTADOR DA VARIAVEL CONTADOR.
     }//GEN-LAST:event_btnIgualActionPerformed
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
-        reiniciarCalculadora();
-        jPanel1.requestFocus();
-        contador=0;
-        btnPonto.setEnabled(true);
+        reiniciarCalculadora(); // CHAMADA DA FUNCAO REINICIARCALCULADORA() RESPONSÁVEL POR ZERAR O NÚMERO DAS VARIAVEIS E LIMPAR TODOS OS CAMPOS.
+        jPanel1.requestFocus(); // FOCO É RETORNADO PARA O JPANEL PARA QUE SEJA POSSIVEL DIGITAR COM O TECLADO.
+        btnPonto.setEnabled(true); // O BOTÃO DO PONTO É ATIVADO NOVAMENTE.
     }//GEN-LAST:event_btnCActionPerformed
 
 
     private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
-        backspace();
+        backspace(); // CHAMADA DA FUNÇÃO BACKSPACE PARA QUE SEJA REMOVIDO O ULTIMO NÚMERO DO LBLTELA.
     }//GEN-LAST:event_btnBackActionPerformed
 
 
     private void jPanel1KeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jPanel1KeyPressed
+        //CONDICAO PARA VERIFICAR SE É UM NUMERO DIGITADO/IGUAL OU BACKSPACE.
         if(evt.getKeyChar()=='0' ||
            evt.getKeyChar()=='1' ||
            evt.getKeyChar()=='2' ||
@@ -669,200 +678,202 @@ public class calculadora extends javax.swing.JFrame {
            evt.getKeyChar()=='8' ||
            evt.getKeyChar()=='9')
         {
-           setarNumerosLbTela(evt.getKeyChar());
+           setarNumerosLbTela(evt.getKeyChar()); //CHAMADA DO METODO SETARNUMEROSLBTELA() PARA VERIFICAR O NUMERO DIGITADO E INSERIR NO LBLTELA.
         }else if(evt.getKeyChar() == '-' ||
                  evt.getKeyChar() == '+' ||
                  evt.getKeyChar() == '/' ||
                  evt.getKeyChar() == '*'){
-            pegarNum1();
-            operacao = evt.getKeyChar();
-            setarValoresLbTemp();
+            pegarNum1(); // CHAMADA DO METODO PEGARNUM1() RESPONSÁVEL POR PEGAR O PRIMEIRO NUMERO E ATRIBUIR NA VARIAVEL NUM1;
+            operacao = evt.getKeyChar(); //CODIGO PARA VERIFICAR A OPERAÇÃO QUE FOI DIGITADA.
+            setarValoresLbTemp(); //CHAMADA DO MEOTOD SETARVALORESLBTEMP() PARA QUE O NÚMERO DIGITADO SEJA INSERIDO NO LBLTEMP.
         }else if(evt.getKeyCode()==10){
-              if(contador==0){
-                pegarNum2();
-                calcular();
-                lblTemp.setText(num1+ " " + operacao + " " + num2 + " =");
+            //CONDIÇÃO UTILIZADA PARA QUE SEJA POSSIVEL REALIZAR DUAS OU MAIS OPERAÇÕES APENAS APERTANDO = DUAS VEZES.
+            if(contador==0){
+                pegarNum2(); //CHAMADA DO METODO PEGARNUM2() PARA PEGAR O SEGUNDO NUMERO DIGITADO.
+                calcular(); //CHAMADA DO METODO CALCULAR() PARA CALCULAR OS NÚMEROS DE ACORDO COM SUA OPERACAO.
+                lblTemp.setText(num1+ " " + operacao + " " + num2 + " ="); //CODIGO PARA INCREMENTAR O SEGUNDO NUMERO DIGITADO JUNTO AO PRIMEIRO + A SUA OPERAÇÃO NO LBLTEMP.
               }else{
-                calcular();
-                lblTemp.setText(num1+ " " + operacao + " " + num2 + " =");
+                calcular(); //CHAMADA DO METODO CALCULAR() PARA CALCULAR OS NÚMEROS DE ACORDO COM SUA OPERACAO.
+                lblTemp.setText(num1+ " " + operacao + " " + num2 + " ="); //CODIGO PARA INCREMENTAR O SEGUNDO NUMERO DIGITADO JUNTO AO PRIMEIRO + A SUA OPERAÇÃO NO LBLTEMP.
               }
               contador++;
         }else if(evt.getKeyCode()==8){
-            backspace();
+            backspace(); // CHAMADA DA FUNÇÃO BACKSPACE PARA QUE SEJA REMOVIDO O ULTIMO NÚMERO DO LBLTELA.
         }
         
     }//GEN-LAST:event_jPanel1KeyPressed
 
     private void btnMaisMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisMenosActionPerformed
         //String numero = lblTela.getText();
-        double num = Double.parseDouble(lblTela.getText());
+        double num = Double.parseDouble(lblTela.getText()); //CRIAÇÃO DE UMA VARIAVEL CHAMADA 'NUM' DO TIPO 'DOUBLE' E ATRIBUIÇÃO A MESMA COM O VALOR QUE ESTA PRESENTE NO LBLTELA.
         
+        //CONDICAO PARA VERIFICAR SE A VARIAVEL NUM É DIFERENTE DE 0, POIS 0 NÃO PODE SER NEGATIVO.
         if(num!=0){
-            num = num * -1;
-            lblTela.setText(String.valueOf(num));
+            num = num * -1; //OPERAÇÃO PARA QUE O SINAL DO NÚMERO SEJA INVERTIDO.
+            lblTela.setText(String.valueOf(num)); //CODIGO PARA SETAR O NUMERO NO LBLTELA.
         }
-        jPanel1.requestFocus();
+        jPanel1.requestFocus(); //CODIGO PARA QUE O FOCO VOLTE PARA O JPANEL.
         
     }//GEN-LAST:event_btnMaisMenosActionPerformed
 
     private void btn7MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn7MouseEntered
-        btn7.setBackground(new Color(153,153,153));
+        btn7.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btn7MouseEntered
 
     private void btn7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn7MouseExited
-        btn7.setBackground(new Color(204,204,204));
+        btn7.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btn7MouseExited
 
     private void btn8MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn8MouseEntered
-        btn8.setBackground(new Color(153,153,153));
+        btn8.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btn8MouseEntered
 
     private void btn8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn8MouseExited
-        btn8.setBackground(new Color(204,204,204));
+        btn8.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btn8MouseExited
 
     private void btn9MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn9MouseEntered
-        btn9.setBackground(new Color(153,153,153));
+        btn9.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btn9MouseEntered
 
     private void btn9MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn9MouseExited
-        btn9.setBackground(new Color(204,204,204));
+        btn9.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btn9MouseExited
 
     private void btn4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn4MouseEntered
-        btn4.setBackground(new Color(153,153,153));
+        btn4.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btn4MouseEntered
 
     private void btn4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn4MouseExited
-        btn4.setBackground(new Color(204,204,204));
+        btn4.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btn4MouseExited
 
     private void btn5MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn5MouseEntered
-        btn5.setBackground(new Color(153,153,153));
+        btn5.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btn5MouseEntered
 
     private void btn5MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn5MouseExited
-        btn5.setBackground(new Color(204,204,204));
+        btn5.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btn5MouseExited
 
     private void btn6MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn6MouseEntered
-        btn6.setBackground(new Color(153,153,153));
+        btn6.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btn6MouseEntered
 
     private void btn6MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn6MouseExited
-        btn6.setBackground(new Color(204,204,204));
+        btn6.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btn6MouseExited
 
     private void btn1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn1MouseEntered
-        btn1.setBackground(new Color(153,153,153));
+        btn1.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btn1MouseEntered
 
     private void btn1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn1MouseExited
-        btn1.setBackground(new Color(204,204,204));
+        btn1.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btn1MouseExited
 
     private void btn2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn2MouseExited
-        btn2.setBackground(new Color(204,204,204));
+        btn2.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btn2MouseExited
 
     private void btn3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn3MouseExited
-        btn3.setBackground(new Color(204,204,204));
+        btn3.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btn3MouseExited
 
     private void btn2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn2MouseEntered
-        btn2.setBackground(new Color(153,153,153));
+        btn2.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btn2MouseEntered
 
     private void btn3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn3MouseEntered
-        btn3.setBackground(new Color(153,153,153));
+        btn3.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btn3MouseEntered
 
     private void btn0MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn0MouseEntered
-        btn0.setBackground(new Color(153,153,153));
+        btn0.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btn0MouseEntered
 
     private void btn0MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn0MouseExited
-        btn0.setBackground(new Color(204,204,204));
+        btn0.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btn0MouseExited
 
     private void btnDivMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDivMouseEntered
-        btnDiv.setBackground(new Color(255,224,132));
+        btnDiv.setBackground(new Color(255,224,132)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btnDivMouseEntered
 
     private void btnDivMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnDivMouseExited
-        btnDiv.setBackground(new Color(255,204,51));
+        btnDiv.setBackground(new Color(255,204,51)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btnDivMouseExited
 
     private void btnMaisMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaisMouseEntered
-        btnMais.setBackground(new Color(255,224,132));
+        btnMais.setBackground(new Color(255,224,132)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btnMaisMouseEntered
 
     private void btnMultMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMultMouseEntered
-        btnMult.setBackground(new Color(255,224,132));
+        btnMult.setBackground(new Color(255,224,132)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btnMultMouseEntered
 
     private void btnMenosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenosMouseEntered
-        btnMenos.setBackground(new Color(255,224,132));
+        btnMenos.setBackground(new Color(255,224,132)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btnMenosMouseEntered
 
     private void btnRaizMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRaizMouseEntered
-        btnRaiz.setBackground(new Color(255,224,132));
+        btnRaiz.setBackground(new Color(255,224,132)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btnRaizMouseEntered
 
     private void btnMaisMenosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaisMenosMouseEntered
-        btnMaisMenos.setBackground(new Color(255,224,132));
+        btnMaisMenos.setBackground(new Color(255,224,132)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btnMaisMenosMouseEntered
 
     private void btnIgualMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIgualMouseEntered
-        btnIgual.setBackground(new Color(255,224,132));
+        btnIgual.setBackground(new Color(255,224,132)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btnIgualMouseEntered
 
     private void btnIgualMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnIgualMouseExited
-        btnIgual.setBackground(new Color(255,204,51));
+        btnIgual.setBackground(new Color(255,204,51)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btnIgualMouseExited
 
     private void btnMaisMenosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaisMenosMouseExited
-        btnMaisMenos.setBackground(new Color(255,204,51));
+        btnMaisMenos.setBackground(new Color(255,204,51)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btnMaisMenosMouseExited
 
     private void btnMenosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMenosMouseExited
-        btnMenos.setBackground(new Color(255,204,51));
+        btnMenos.setBackground(new Color(255,204,51)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btnMenosMouseExited
 
     private void btnRaizMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnRaizMouseExited
-        btnRaiz.setBackground(new Color(255,204,51));
+        btnRaiz.setBackground(new Color(255,204,51)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btnRaizMouseExited
 
     private void btnMaisMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMaisMouseExited
-        btnMais.setBackground(new Color(255,204,51));
+        btnMais.setBackground(new Color(255,204,51)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btnMaisMouseExited
 
     private void btnMultMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnMultMouseExited
-        btnMult.setBackground(new Color(255,204,51));
+        btnMult.setBackground(new Color(255,204,51)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btnMultMouseExited
 
     private void btnBackMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseEntered
-        btnBack.setBackground(new Color(255,224,132));
+        btnBack.setBackground(new Color(255,224,132)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btnBackMouseEntered
 
     private void btnBackMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnBackMouseExited
-        btnBack.setBackground(new Color(255,204,51));
+        btnBack.setBackground(new Color(255,204,51)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btnBackMouseExited
 
     private void btnCMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCMouseExited
-        btnC.setBackground(new Color(153,153,153));
+        btnC.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btnCMouseExited
 
     private void btnPontoMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPontoMouseExited
-        btnPonto.setBackground(new Color(153,153,153));
+        btnPonto.setBackground(new Color(153,153,153)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE NÃO ESTIVER MAIS SOBRE O MESMO.
     }//GEN-LAST:event_btnPontoMouseExited
 
     private void btnCMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCMouseEntered
-        btnC.setBackground(new Color(204,204,204));
+        btnC.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btnCMouseEntered
 
     private void btnPontoMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnPontoMouseEntered
-        btnPonto.setBackground(new Color(204,204,204));
+        btnPonto.setBackground(new Color(204,204,204)); //CODIGO PARA QUE A COR DO BOTÃO SEJA MODIFICADA QUANDO O MOUSE ESTIVER SOBRE O MESMO.
     }//GEN-LAST:event_btnPontoMouseEntered
 
     /**
@@ -929,6 +940,8 @@ public class calculadora extends javax.swing.JFrame {
     private javax.swing.JLabel lblTemp;
     // End of variables declaration//GEN-END:variables
 
+    
+    //METODO RESPONSÁVEL POR SETAR OS NUMEROS NO LBTELA.
      public void setarNumerosLbTela(char numero){
 
         if("0".equals(lblTela.getText()) && !".".equals(String.valueOf(numero))){
@@ -944,22 +957,26 @@ public class calculadora extends javax.swing.JFrame {
         }
     }
     
+     //METODO RESPONSAVEL POR ATRIBUIR O NUMERO DIGITADO A VARIAVEL 1.
     public void pegarNum1(){
         num1 = Double.parseDouble(lblTela.getText());
         lblTela.setText("0");
         jPanel1.requestFocus();
     }
     
+    //METODO RESPONSAVEL POR ATRIBUIR O NUMERO DIGITADO A VARIAVEL 2.
     public void pegarNum2(){
         num2 = Double.parseDouble(lblTela.getText());
         lblTela.setText("");
         
     }
     
+    //METODO RESPONSAVEL POR ATRIBUIR O NUMERO DIGITADO AO LBLTEMP.
     public void setarValoresLbTemp(){
             lblTemp.setText(num1 + " " +operacao);
     }
     
+    //METODO RESPONSAVEL POR VERIFICAR A OPERAÇÃO SOLICITADA E REALIZAR COM BASE NOS DOIS NUMEROS DIGITADOS.
     public void calcular(){
         if(num2==0 && operacao=='/'){
             JOptionPane.showMessageDialog(null, "Operação inválida!"); 
@@ -1000,22 +1017,18 @@ public class calculadora extends javax.swing.JFrame {
             jPanel1.requestFocus();
     }
     
+    //METODO PARA ZERAR TODA A CALCULADORA.
     public void reiniciarCalculadora() {
         num1 = 0;
         num2 = 0;
         resultado = 0;
         lblTela.setText("0");
         lblTemp.setText("");
+        contador=0;
     }
 
-    public calculadora() {
-        initComponents();
-        this.setLocationRelativeTo(null);
-        jPanel1.setFocusable(true);
-        incrementarIcone();
-        //lblTela.setBorder(new EtchedBorder());
-    }
-    
+
+    //METODO DA FUNÇÃO BACKSPACE: VOLTA UM NÚMERO.
     public void backspace() {
         String valor_lblTela = lblTela.getText();
         
@@ -1036,6 +1049,7 @@ public class calculadora extends javax.swing.JFrame {
         jPanel1.requestFocus();
     }
     
+    //METODO PARA INCREMENTAR O ICONE NA BARRA SUPERIOR.
     private void incrementarIcone() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("calculator.png")));
     }
