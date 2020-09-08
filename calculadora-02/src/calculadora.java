@@ -597,6 +597,7 @@ public class calculadora extends javax.swing.JFrame {
 
     private void btnPontoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPontoActionPerformed
         setarNumerosLbTela('.');
+        btnPonto.setEnabled(false);
     }//GEN-LAST:event_btnPontoActionPerformed
 
     private void btnMaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisActionPerformed
@@ -647,6 +648,7 @@ public class calculadora extends javax.swing.JFrame {
         reiniciarCalculadora();
         jPanel1.requestFocus();
         contador=0;
+        btnPonto.setEnabled(true);
     }//GEN-LAST:event_btnCActionPerformed
 
 
@@ -676,9 +678,15 @@ public class calculadora extends javax.swing.JFrame {
             operacao = evt.getKeyChar();
             setarValoresLbTemp();
         }else if(evt.getKeyCode()==10){
-              pegarNum2();
-              calcular();
-              lblTemp.setText(num1+ " " + operacao + " " + num2 + " =");
+              if(contador==0){
+                pegarNum2();
+                calcular();
+                lblTemp.setText(num1+ " " + operacao + " " + num2 + " =");
+              }else{
+                calcular();
+                lblTemp.setText(num1+ " " + operacao + " " + num2 + " =");
+              }
+              contador++;
         }else if(evt.getKeyCode()==8){
             backspace();
         }
@@ -971,16 +979,16 @@ public class calculadora extends javax.swing.JFrame {
                 }
             }else{
                 if(operacao == '+'){
-                    num1 = num1+num2;
+                    num1 = resultado;
                     resultado = num1 + num2;
                 }else if(operacao == '-'){
-                    num1 = num1-num2;
+                    num1=resultado;
                     resultado = num1 - num2;
                 }else if(operacao == '*'){
-                    num1 = num1*num2;
+                    num1=resultado;
                     resultado = num1 * num2;
                 }else if(operacao == '/'){
-                    num1 = num1/num2;
+                    num1=resultado;
                     resultado = num1 / num2;
                 }else{
                     resultado = Math.sqrt(num1);
