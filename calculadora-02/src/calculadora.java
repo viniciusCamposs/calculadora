@@ -16,102 +16,8 @@ import javax.swing.border.EtchedBorder;
  */
 public class calculadora extends javax.swing.JFrame {
 
-    double num1, num2, resultado;
+    double num1, num2, resultado, contador=0;
     char operacao;
-    
-    
-    public void setarNumerosLbTela(char numero){
-        
-        
-        if("0".equals(lblTela.getText()) && !".".equals(String.valueOf(numero))){
-            lblTela.setText("");
-        }
-        
-        String texto = lblTela.getText();
-        
-        if(texto.length()<=14){
-            texto = texto+numero;
-            lblTela.setText(texto);
-            jPanel1.requestFocus();
-        }
-    }
-    
-    public void pegarNum1(){
-        num1 = Double.parseDouble(lblTela.getText());
-        lblTela.setText("0");
-        jPanel1.requestFocus();
-    }
-    
-    public void pegarNum2(){
-        num2 = Double.parseDouble(lblTela.getText());
-        lblTela.setText("");
-        
-    }
-    
-    public void setarValoresLbTemp(){
-        lblTemp.setText(num1 + " " +operacao);
-    }
-    
-    public void calcular(){
-        if(num2==0 && operacao=='/'){
-            JOptionPane.showMessageDialog(null, "Operação inválida!"); 
-            reiniciarCalculadora();
-        }else{
-            if(operacao == '+'){
-                resultado = num1 + num2;
-            }else if(operacao == '-'){
-                resultado = num1 - num2;
-            }else if(operacao == '*'){
-                resultado = num1 * num2;
-            }else if(operacao == '/'){
-                resultado = num1 / num2;
-            }else{
-                resultado = Math.sqrt(num1);
-            }
-        }
-
-            lblTela.setText(String.valueOf(resultado));
-            jPanel1.requestFocus();
-    }
-    
-    public void reiniciarCalculadora() {
-        num1 = 0;
-        num2 = 0;
-        resultado = 0;
-        lblTela.setText("0");
-        lblTemp.setText("");
-    }
-
-    public calculadora() {
-        initComponents();
-        this.setLocationRelativeTo(null);
-        jPanel1.setFocusable(true);
-        incrementarIcone();
-        //lblTela.setBorder(new EtchedBorder());
-    }
-    
-    public void backspace() {
-        String valor_lblTela = lblTela.getText();
-        
-        if(lblTela.getText().length()>1){
-            
-            if(".".equals(valor_lblTela.substring(valor_lblTela.length()-2, valor_lblTela.length()-1))){
-                valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-2);
-                lblTela.setText(valor_lblTela);
-            }else{
-                valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-1);
-            }
-            
-            lblTela.setText(valor_lblTela);
-            
-        }else{
-            lblTela.setText("0");
-        }
-        jPanel1.requestFocus();
-    }
-        
-
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -725,14 +631,22 @@ public class calculadora extends javax.swing.JFrame {
     }//GEN-LAST:event_btnRaizActionPerformed
 
     private void btnIgualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnIgualActionPerformed
-        pegarNum2();
-        calcular();
-        lblTemp.setText(lblTemp.getText() + " " + num2);
+        
+        if(contador==0){
+            pegarNum2();
+            calcular();
+            lblTemp.setText(lblTemp.getText() + " " + num2 + " =");
+        }else{
+            calcular();
+            lblTemp.setText(num1+ " " + operacao + " " + num2 + " =");
+        }
+        contador++;
     }//GEN-LAST:event_btnIgualActionPerformed
 
     private void btnCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCActionPerformed
         reiniciarCalculadora();
         jPanel1.requestFocus();
+        contador=0;
     }//GEN-LAST:event_btnCActionPerformed
 
 
@@ -751,23 +665,24 @@ public class calculadora extends javax.swing.JFrame {
            evt.getKeyChar()=='6' ||     
            evt.getKeyChar()=='7' ||
            evt.getKeyChar()=='8' ||
-           evt.getKeyChar()=='9'){
-            setarNumerosLbTela(evt.getKeyChar());
+           evt.getKeyChar()=='9')
+        {
+           setarNumerosLbTela(evt.getKeyChar());
         }else if(evt.getKeyChar() == '-' ||
                  evt.getKeyChar() == '+' ||
                  evt.getKeyChar() == '/' ||
                  evt.getKeyChar() == '*'){
             pegarNum1();
-            
             operacao = evt.getKeyChar();
             setarValoresLbTemp();
         }else if(evt.getKeyCode()==10){
-            pegarNum2();
-            calcular();
-            lblTemp.setText(lblTemp.getText() + "" + num2);
+              pegarNum2();
+              calcular();
+              lblTemp.setText(num1+ " " + operacao + " " + num2 + " =");
         }else if(evt.getKeyCode()==8){
             backspace();
         }
+        
     }//GEN-LAST:event_jPanel1KeyPressed
 
     private void btnMaisMenosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMaisMenosActionPerformed
@@ -1006,6 +921,113 @@ public class calculadora extends javax.swing.JFrame {
     private javax.swing.JLabel lblTemp;
     // End of variables declaration//GEN-END:variables
 
+     public void setarNumerosLbTela(char numero){
+
+        if("0".equals(lblTela.getText()) && !".".equals(String.valueOf(numero))){
+            lblTela.setText("");
+        }
+        
+        String texto = lblTela.getText();
+        
+        if(texto.length()<=14){
+            texto = texto+numero;
+            lblTela.setText(texto);
+            jPanel1.requestFocus();
+        }
+    }
+    
+    public void pegarNum1(){
+        num1 = Double.parseDouble(lblTela.getText());
+        lblTela.setText("0");
+        jPanel1.requestFocus();
+    }
+    
+    public void pegarNum2(){
+        num2 = Double.parseDouble(lblTela.getText());
+        lblTela.setText("");
+        
+    }
+    
+    public void setarValoresLbTemp(){
+            lblTemp.setText(num1 + " " +operacao);
+    }
+    
+    public void calcular(){
+        if(num2==0 && operacao=='/'){
+            JOptionPane.showMessageDialog(null, "Operação inválida!"); 
+            reiniciarCalculadora();
+        }else{
+            if(contador==0){
+                if(operacao == '+'){
+                    resultado = num1 + num2;
+                }else if(operacao == '-'){
+                    resultado = num1 - num2;
+                }else if(operacao == '*'){
+                    resultado = num1 * num2;
+                }else if(operacao == '/'){
+                    resultado = num1 / num2;
+                }else{
+                    resultado = Math.sqrt(num1);
+                }
+            }else{
+                if(operacao == '+'){
+                    num1 = num1+num2;
+                    resultado = num1 + num2;
+                }else if(operacao == '-'){
+                    num1 = num1-num2;
+                    resultado = num1 - num2;
+                }else if(operacao == '*'){
+                    num1 = num1*num2;
+                    resultado = num1 * num2;
+                }else if(operacao == '/'){
+                    num1 = num1/num2;
+                    resultado = num1 / num2;
+                }else{
+                    resultado = Math.sqrt(num1);
+                }
+            }
+        }
+
+            lblTela.setText(String.valueOf(resultado));
+            jPanel1.requestFocus();
+    }
+    
+    public void reiniciarCalculadora() {
+        num1 = 0;
+        num2 = 0;
+        resultado = 0;
+        lblTela.setText("0");
+        lblTemp.setText("");
+    }
+
+    public calculadora() {
+        initComponents();
+        this.setLocationRelativeTo(null);
+        jPanel1.setFocusable(true);
+        incrementarIcone();
+        //lblTela.setBorder(new EtchedBorder());
+    }
+    
+    public void backspace() {
+        String valor_lblTela = lblTela.getText();
+        
+        if(lblTela.getText().length()>1){
+            
+            if(".".equals(valor_lblTela.substring(valor_lblTela.length()-2, valor_lblTela.length()-1))){
+                valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-2);
+                lblTela.setText(valor_lblTela);
+            }else{
+                valor_lblTela = valor_lblTela.substring(0, valor_lblTela.length()-1);
+            }
+            
+            lblTela.setText(valor_lblTela);
+            
+        }else{
+            lblTela.setText("0");
+        }
+        jPanel1.requestFocus();
+    }
+    
     private void incrementarIcone() {
         setIconImage(Toolkit.getDefaultToolkit().getImage(getClass().getResource("calculator.png")));
     }
